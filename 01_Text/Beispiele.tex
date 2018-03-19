@@ -1,152 +1,89 @@
 % !TEX root = Automatisierung.tex
 
-\chapter{Automatisierung der Ausführung}
+\chapter{Testkapitel}
 
-\section{Testimplementierung in Travis}
-In diesem Kapitel wird erläutert, was Travis ist und inwiefern damit Cypress Tests automatisiert werden können. Zusätzlich wird näher auf das Cypress Dashboard eingegangen.
-
-\subsection{Travis}
-Mit Travis ist es möglich Software Tests automatisiert auszuführen. Travis kann mit einem öffentlichen (kostenfrei) oder einem privaten (Kostenpflichtig) Github \gls{repository} verknüpft werden. Die Website hat dafür zwei unterschiedliche Domains bereitgestellt. travis-ci.org für öffentliche Projekte und travis-ci.com für private Projekte. Jedes Mal wenn eine Änderung des Codes auf dem verknüpften Github-\gls{repository} stattfindet, lässt sich mithilfe von Konfigurationsdateien bestimmen, welche Anweisungen erfolgen. Diese Anweisungen müssen nicht zwingend das Ausführen von Tests enthalten, es können auch Anweisungen zum Versenden von Nachrichten oder Erstellen von Berichten sein \autocite{travis}.
-
-\subsection{Git / Github}
-
-\begin{itemize}
-	\item \textbf{Git}\\
-	Git ist ein System zur verteilten Versionsverwaltung mehrerer Dateien. Es wurde unter den Aspekten Geschwindigkeit, einfaches Design, guter Unterstützung von nicht-linearer Entwicklung, vollständiger Verteilung und der Fähigkeit große Projekte effektiv zu verwalten entwickelt. Das Prinzip besteht darin, den Zustand einer oder mehrerer Dateien zu sichern und diese sogenannten \glspl{snapshot}, unter einer Referenz abzuspeichern. Bei diesem Vorgang werden unveränderte Dateien nicht erfasst, es wird lediglich eine Verknüpfung zu der Datei erstellt. Durch diese Vorgehensweise wird die Effizienz und Geschwindigkeit besonders bei großen Projekten enorm gesteigert. Ein weiterer großer Vorteil ist die Möglichkeit einen \gls{branch} zu erstellen. Ein \gls{branch} in Git ist ein simpler Zeiger, der auf einen Codestand verweist. Er ermöglicht es, an mehreren Codeständen zur selben Zeit zu entwickeln und diese später zusammenzuführen \autocite{gitbook}.
-	
-	\item \textbf{Github}\\
-	Github ist eine im Jahre 2007 in San Francisco gegründete Website, mit der es möglich ist Entwicklungsprojekte anzulegen und zu verwalten. In sogenannten \glspl{repository} werden Daten und Codestände verschiedener Projekte gespeichert und können mithilfe der Versionsverwaltung Git abgerufen und verändert werden \autocite{github}.
-	
-\end{itemize}
-
-\subsection{Testimplementierung}
-Um Travis nutzen zu können, müssen im ersten Schritt folgende Voraussetzungen erfüllt werden \autocite{travisStart}:
-
-\begin{itemize}
-	
-	\item GitHub login
-	\item Zu automatisierendes Projekt, bereitgestellt auf einem GitHub-\gls{repository}
-	\item Lauffähiger Code im Projekt
-	\item Lauffähiger Stand oder Testscript
-	
-\end{itemize}
-
-Nachdem alle Voraussetzungen erfüllt sind, kann nun der Travis Login stattfinden. Hierbei ist zu beachten, dass die Zugriffsvereinbarungen akzeptiert werden, da Travis sonst keinen Zugriff auf das zu automatisierende Projekt erhält. Anschließend kann direkt über die eigenen Profileinstellungen das GitHub-\gls{repository} mit dem lauffähigen Code ausgewählt werden. Über diese Einstellung kann auch konfiguriert werden, wann Tests automatisiert ausgeführt werden sollen. Im Rahmen dieser Arbeit wurde eine Testausführung, einmal am Tag und immer wenn der Master Branch des Github-\glspl{repository} verändert wurde, eingestellt.
+\textbf{Zitate:}\\
+Testbuch: \autocite{testBook} \\
+TestArtikel: \autocite{testArticle} \\
+TestLink: \autocite{beispiel}
 \\\\
-Im nächsten Schritt muss eine Datei mit dem Namen \enquote{.travis.yml} im Hauptverzeichnis des GitHub-\glspl{repository} erstellt werden. Mithilfe dieser Datei erhält Travis Informationen darüber, was während einer Testausführung geschehen soll.
+\textbf{Weiteres}\\
+Glossar Einzahl: \gls{beispiel}\\
+Glossar Explizit: \glspl{beispiel}\\
+Acronym: \acs{BSP}
 
-	\lstset{style=travis, caption={Travis Konfigurationsdatei (.travis.yml)}, label={lst:travis.yml}}
+\section{Testoberpunkt} \label{kap:OBERPUNKT}
+
+% Zitat
+\begin{definition}{Testzitat (Quelle: \autocite{beispiel})}{def:TEST}
+	\\ 
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+	\\
+\end{definition}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet HIER REF AUF ETWAS: \ref{kap:OBERPUNKT}.   
+\\\\
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
+\\\\
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
+\\\\
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
+\\\\
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
+\\\\
+At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur 
+
+
+\subsection{Testpunkt} \label{kap:TESTPUNKT}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+\subsubsection{Testunterpunkt}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+\begin{itemize}
+	\item \textbf{IPSUM 1}\\
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+	
+	\item \textbf{IPSUM 2}\\
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+	
+\end{itemize}
+
+% Listing
+% ACHTUNG: Für mehr Styles bitte in die Settings Datei schauen!
+\lstset{style=java, caption={TESTLISTING}, label={lst:TEST}}
 \begin{lstlisting}
-language: node_js
-
-node_js:
-	- 6
-
-cache:
-	directories:
-		- ~/.npm
-		- node_modules
-
-install:
-	- npm install cypress --save-dev
-
-before_script:
-	- npm start -- --silent &
-		
-script:										  
-	- cypress run --record --key 12345678-90ab-cdef-1234-567890abcdef --spec cypress/integration/test_player.js
+class Test{
+	public static void main(String arg[]){
+		System.out.println("Hallo Welt");
+	}
+}
 \end{lstlisting} 
 
-Die Hauptparameter des Codebeispiels \ref{lst:travis.yml} wurden der Webseite \autocite{cypressTravisYml} entnommen. Wichtig hierbei ist vor allem die Angabe des Tests in Zeile 18. Dabei übernehmen die folgenden Parameter, bestimmte Aufgaben.
+% Tabelle
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| l |c|c|c|}
+		\hline
+		\textbf{Kriterium}    & \textbf{Gewichtung}		& \textbf{Selenium} & \textbf{Cypress} \\ \hline
+		Installation          & einfach                 & 1		   & 3		 \\
+		Abhängigkeiten        & einfach             	& 1		   & 3		 \\
+		Ausführung während der Testerstellung & einfach & 2		   & 3		 \\
+		\textbf{Kompatibilität}        & \textbf{doppelt}             	& \textbf{6}		   & \textbf{4}		 \\
+		\textbf{iFrame Support}        & \textbf{doppelt}             	& \textbf{6}		   & \textbf{2}		 \\ \hline
+		Gesamt				  &							& \underline{\underline{\textbf{16}}}	   & \underline{\underline{15}}		 \\ \hline
+	\end{tabular}
+	
+	\caption{Testtabelle}
+	\label{tbl:TESTTABELLE}
+	
+\end{table}
 
-\begin{itemize}
-	
-	\item \textbf{--record}\\
-	Mithilfe von --record, ist der Test in der Lage ein Video oder Screenshots des Testablaufs zu erstellen. Diese können über das Cypress Dashboard angesehen oder heruntergeladen werden (siehe Kapitel \ref{def:cypress_dashboard}).
-	
-	\item \textbf{--key}\\
-	Um Videos und Screenshots einem Cypress Account zuzuordnen, gibt es den --key Parameter. Ein Key kann über das Cypress Dashboard generiert und muss bei der Testausführung mit angegeben werden. 
-	
-	\item \textbf{--spec}\\
-	Durch die Angabe von --spec, wird genau spezifiziert, welcher Test ausgeführt werden soll. Wird der Parameter nicht angegeben, werden alle Tests die sich in dem Ordner integration befinden, chronologisch abgearbeitet. 
-	
-\end{itemize}
-
-Alle bisher ausgeführten Tests können auch über die Weboberfläche händisch neu gestartet werden. Zusätzlich gibt es einen Log, der den genauen Ablauf eines jeden Tests genau dokumentiert (siehe Abbildung \ref{img:travis_log}). 
-
+% Abbildung
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{06_Bilder/travis_tests.png}
+	\includegraphics[width=1.0\textwidth]{06_Bilder/Beispielbild.png}
 	\setlength{\abovecaptionskip}{1em}
-	\caption{Travis Testausführung der letzten sechs Tage (Cypress Tests)}
-	\label{img:travis_tests}
+	\caption{TESTBILD}
+	\label{img:TESTBILD}
 \end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth]{06_Bilder/travis_log.png}
-	\setlength{\abovecaptionskip}{1em}
-	\caption{Travis Log nach Abschluss eines Cypress Tests}
-	\label{img:travis_log}
-\end{figure}
-
-\section{Cypress Dashboard} \label{def:cypress_dashboard}
-Cypress bietet ein eigenes Dashboard zur genaueren Analyse automatisierter Tests unter \autocite{cypressDashboard} an. Wie auch bei Travis ist für einen Login, ein GitHub Account Voraussetzung.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{06_Bilder/dashboard_login.png}
-	\setlength{\abovecaptionskip}{0em}
-	\caption{Dashboard Login (Quelle: \autocite{cypressDashboardLogin})}
-	\label{img:dashboard_login}
-\end{figure}
-
-Damit das Dashboard auch Daten zur Auswertung erhält, muss es erst verknüpft werden. Diese Verknüpfung geschieht durch die Erstellung einer sogenannten \enquote{Project ID}. Um diese zu generieren, muss ein Projekt erstellt und einer Organisation zugeordnet werden. Als Organisation wird die glomex angegeben. Der Projektname lässt sich frei wählen und lautet in diesem Fall \enquote{cypress\_glomex}. Nachdem das Projekt erstellt ist, kann über die Einstellungen die sechs stellige Project ID ausgelesen werden. 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{06_Bilder/dashboard_projectid.png}
-	\setlength{\abovecaptionskip}{1em}
-	\caption{Project ID (aus Sicherheitsgründen hier nur fiktiv)}
-	\label{img:dashboard_projectid}
-\end{figure}
-
-Cypress gibt an, die Project ID in die \enquote{cypress.json} (siehe Abbildung \ref{img:cypress_folder}) Datei einzutragen und nicht wieder zu verändern (siehe Abbildung \ref{img:dashboard_projectid}). Die Datei muss ebenso in das aktuelle \gls{repository} hochgeladen werden. Anhand der Project ID verknüpft Cypress während jeder der Testausführung über Travis, den ausgeführten Test, mit dem im Dashboard erstellten Projekt. So wird nach jeder Testausführung automatisch jeder Test im Cypress Dashboard angezeigt. 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1.0\textwidth]{06_Bilder/dashboard_testausfuehrung.png}
-	\setlength{\abovecaptionskip}{0em}
-	\caption{Testausführungen im Projekt cypress\_glomex}
-	\label{img:dashboard_testausfuehrung}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1.0\textwidth]{06_Bilder/dashboard_test_detail.png}
-	\setlength{\abovecaptionskip}{0em}
-	\caption{Testdetails}
-	\label{img:dashboard_test_detail}
-\end{figure}
-
-\newpage
-
-Um mehr Daten zur Ausführung eines Tests zu erhalten, kann der jeweilige Test angeklickt werden. Innerhalb des Tests werden genauere Daten wie etwa der auszuführende \gls{branch}, das Start- und Enddatum, die Länge der Testausführung, das Betriebssystem oder der Browser angezeigt (siehe Abbildung \ref{img:dashboard_test_detail}). Zusätzlich können die folgenden Reiter angeklickt werden:
-
-\begin{itemize}
-	
-	\item \textbf{Output}\\
-	In diesem Reiter wird die Ausgabe des Logs angezeigt (siehe Anhang \ref{img:anhang_testdetail_output}).
-	
-	\item \textbf{Failures}\\
-	Sobald ein Fehler aufgetreten ist, wird er unter dem Reiter \enquote{Failures} angezeigt (siehe Anhang \ref{img:anhang_testdetail_failures}).
-	
-	\item \textbf{Videos}\\
-	Wie in Zeile 18 im Codebeispiel \ref{lst:travis.yml} angegeben, wird ein Video des kompletten Testablaufs erstellt. Unter dem Reiter \enquote{Videos} kann dieses Video angesehen werden (siehe Anhang \ref{img:anhang_testdetail_videos}). 
-	
-	\item \textbf{Screenshots}\\
-	Wenn im Code mithilfe des cy.screenshot() Befehls ein Screenshot erstellt wurde, wird dieser im Reiter \enquote{Screenshots} angezeigt (siehe Anhang \ref{img:anhang_testdetail_screenshots}).\\
-	
-\end{itemize}
-
-Zusammenfassend zeigt sich, dass Cypress auch mit dem Dashboard, Fokus auf Nachvollziehbarkeit und Einfachheit legt. Es ist Cypress gelungen eine perfekte Ergänzung, zu Travis und dem Cypress Test Runner zu schaffen. Durch die Videoaufnahme und Sicherung der Screenshots kann jederzeit nachvollzogen werden, wo das Problem während der Ausführung aufgetreten ist. Somit können auch Probleme ohne jegliche Programmierkenntnisse ermittelt werden, wenn beispielsweise die Webseite nicht erreichbar ist oder das Video nicht abspielt. Das Dashboard ist momentan noch kostenfrei (Stand 05.03.2018). Eine kostenpflichtige Version für private \glspl{repository} ist in Planung. 
