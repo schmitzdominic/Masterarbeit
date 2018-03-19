@@ -1,0 +1,199 @@
+% !TEX root = StandDerTechnik.tex
+
+\chapter{Stand der Technik}
+
+Im Folgenden wird beschrieben was Qualitätsmanagement ist, welche die momentan wichtigsten Testarten sind und von welchen Frameworks Selenium profitiert. Zusätzlich werden weitere Blickwinkel zu diesem Themengebiet reflektiert und ein Überblick über den bisherigen Stand der Forschung gegeben.  
+
+\section{Bedeutung-Qualitätsmanagement}\label{def:Bedeutung}
+
+\begin{definition}{Definition Qualitätsmanagement nach DIN-EN-ISO-9000:2000}{def:Definition}
+	\\ Aufeinander abgestimmte Tätigkeiten zum Leiten und Lenken einer Organisation bezüglich Qualität. \autocite{schwarze2003kundenorientiertes}\\
+\end{definition}
+
+Somit beschreibt der Begriff Qualitätsmanagement alle Maßnahmen und Tätigkeiten, die notwendig sind, um Qualität zu erzeugen \autocite{kochendorfer2004bau}. Qualitätsmanagement findet unternehmensweit statt und erfordert daher eine sehr gute Koordination. \autocite{reinhart1996unternehmensstrategie}.
+
+\subsection{Qualitätsmanagementsysteme}
+Damit Qualitätsmanagement überhaupt umgesetzt werden kann, wird ein sogenanntes Qualitätsmanagementsystem benötigt. Es enthält die Aufbau- und Ablauforganisation, um alle Qualitätsmanagementaufgaben durchzuführen und die folgenden Fragen zu klären \autocite{kochendorfer2004bau}:
+
+\begin{itemize}
+	\item \textbf{Was?}		- Um welche qualitätsbezogenen Aufgaben handelt es sich?
+	\item \textbf{Wer?} 	- Welche Personen nehmen qualitäsbezogene Aufgaben wahr?
+	\item \textbf{Wann?}	- Wie gestaltet sich der Ablauf qualitätsbezogener Aufgaben?
+	\item \textbf{Wie?}		- Was für Verfahren werden angewendet?
+\end{itemize}
+
+Mit der Norm DIN-EN-ISO-9000 wurde ein einheitlicher Standard zum Vergleich und Aufbau verschiedener Qualitätsmanagementsysteme erstellt \autocite{kochendorfer2004bau}.
+
+\subsection{Qualität}
+Der Begriff \enquote{Qualität} sagt aus, dass jeder Kunde, Wünsche aufgrund der von ihm festgelegten Ansprüche besitzt, die gegenüber dem Hersteller gerne als Qualitätsanforderungen oder in Form von Erwartungen geäußert werden. Durch diese Anforderungen und Erwartungen bildet sich wiederum eine Vorstellung des Produktpreises. Was für eine Qualität ein Produkt besitzt, ergibt sich schließlich erst durch den Vergleich zwischen der Beschaffenheit und den Produktanforderungen des Kunden \autocite{qualitaetsmanagement}.
+
+\section{\acs{QA}-Abteilung}\label{def:qaAbteilung}
+Eine Quality Assurance (\acs{QA})-Abteilung beschäftigt sich mit der Sicherstellung vorher definierter Qualitätsanforderungen. Großteils geht es darum, die technische Zuverlässigkeit von Prozessen und Produkten eines Unternehmens zu gewährleisten. Diese Gewährleistung führt zu einer Risikominimierung für das Unternehmen und den Kunden. Ein weiterer Aspekt ist die Kostenreduktion durch eine geringere Haftung auf Schadensersatz gegen den Hersteller. \acs{QA}-Abteilungen müssen daher ständig die Qualität der Produkte und Dienstleistungen im Auge behalten und deren Zuverlässigkeit sicherstellen \autocite{qa_buch}.
+
+\section{Testpyramide} \label{def:testpyramide}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{06_Bilder/testpyramide.png}
+	\setlength{\abovecaptionskip}{-1em}
+	\caption{Testpyramide nach (Quelle: \autocite{frueheTesterfaengtdenWurm})}
+	\label{img:testpyramide}
+\end{figure}  
+
+Zur besseren Einordnung bestimmter Tests wurde von Mike Cohn das Konzept der Test-Pyramide entwickelt. Die Pyramide soll die richtige Verteilung der unterschiedlichen Testarten verdeutlichen. Idealerweise gibt es im Fundament einen sehr hohen Anteil an einfach zu wartenden Unittests (siehe Kapitel \ref{def:Unittest}). Integrations-Tests (siehe Kapitel \ref{def:Integrationstest}) haben in der Regel längere Ausführzeiten und sind aufwendiger zu pflegen. Durch diesen Umstand werden Integrations-Tests meist nur zur zielgerichteten Prüfung von kritischen Schnittstellen eingesetzt. Manuelle und automatisierte Oberflächentests (GUI-Tests) bilden die Spitze. Diese Tests eignen sich dazu, in der Gesamtheit die Funktionalität der Software zu gewährleisten. Oberflächentests eignen sich nicht dazu, alle möglichen Zweige innerhalb des Quellcodes zu überprüfen, daher sollte ihre Anzahl auch minimal gehalten werden \autocite{testpyramide}. 
+
+\section{Test-Arten} \label{def:Testarten}
+Im Kapitel \ref{def:testpyramide} Testpyramide wurde beschrieben welche Testarten sich innerhalb der Testpyramide befinden und welchen Anteil diese ausmachen. Anhand der Testpyramide gegliedert, werden in diesem Kapitel einige Testarten genauer beleuchtet.
+
+\subsection{Unittests} \label{def:Unittest}
+Unittests, auch Modultests genannt, werden häufig seitens der Entwickler durchgeführt. Diese Art von Tests testen sämtliche Teile (Units) einer Software auf Funktionalität. Dabei wird als erstes der Ausgangszustand (Soll-Zustand) definiert. Hierbei werden Werte definiert, die die Funktionalität einer Unit gewährleisten. Anschließend wird bei der Ausführung, der resultierende Wert (Ist-Zustand) mit dem vorher definierten verglichen. Stimmen diese nicht überein, schlägt der Test fehl \autocite{testarten}.
+
+\subsection{Integrationstests} \label{def:Integrationstest}
+Im Vergleich zu den Unittests, bei denen nur einzelne Module getestet werden, wird bei einem Integrationstest das Zusammenspiel der Module getestet. Die Voraussetzung dafür ist, dass geeignete Testdaten und Schnittstellen technisch zur Verfügung stehen. Integrationstests werden mit Testdaten (auch synthetische Daten genannt) durchgeführt. Wie auch bei anderen Testarten wird eine Liste mit einzelnen Schritten, die jeweils eine Beschreibung und ein erwartetes Ergebnis definieren, im Vorhinein erstellt und abgearbeitet \autocite{testarten}.
+
+\subsection{Oberflächentests (GUI-Tests)}
+Unter dem Begriff Oberflächentests (GUI-Tests) werden alle Tests verstanden, bei denen der Tester versucht mit dem Produkt über die grafische Oberfläche (GUI) zu interagieren. Bei diesen Tests gibt es verschiedene Vorgehensweisen, die in diesem Kapitel beschrieben werden.
+
+\subsubsection{Explorativer Test} \label{def:ExplorativerTest}
+Exploratives Testing deckt Fehler in einer Software durch die Intuition des ausführenden Testers auf. Es werden keine detaillierten Testfälle im Vorhinein definiert. Dem Tester wird nur eine grobe Vorgabe in Form einer Checkliste oder der Nennung eines Testgebietes, wie etwa \enquote{Teste eine Stunde das User Interface}, vorgegeben. Durch diese Vorgabe wird gewährleistet, dass der Tester zielgerichtet vorgeht. Auf welche Art und Weise der Tester dabei vorgeht, bleibt ihm vollkommen selbst überlassen \autocite{winter2013testverfahren}. 
+
+\subsubsection{Akzeptanztest / Abnahmetest} \label{def:Akzeptanztest}
+Ein Akzeptanztest, auch Abnahmetest genannt, überprüft ob ein System alle vom Auftraggeber geforderten Anforderungen erfüllt. Diese Art von Test stellt sicher, dass der Anwender im späteren Betrieb mit der Anwendung arbeiten kann. Damit der Test realitätsnah ist, muss dieser auf einer möglichst realen Plattform mit entsprechenden Daten und Berechtigungen erfolgen \autocite{testarten}. 
+
+\subsubsection{End-to-End Test} \label{def:EndtoEndTest}
+Komplexe Software enthält bestimmte Prozesse, die im Rahmen eines End-to-End Tests durchlaufen werden können. Diese Prozesse beziehen meistens mehrere Komponenten eines Systemverbunds mit ein. Ein End-to-End Test überprüft die Funktionstüchtigkeit eines bestimmten Prozesses. Als Beispiel lässt sich der Registrierungsprozess eines Forums nehmen (siehe Abbildung \ref{img:endtoend_test}) \autocite{testarten}.
+\newline
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{06_Bilder/endtoend_test.png}
+	\setlength{\abovecaptionskip}{0em}
+	\caption{End-to-End (Beispiel Registrierungsprozess)}
+	\label{img:endtoend_test}
+\end{figure} 
+
+\section{Selenium} \label{def:Selenium}
+Wie bereits im Kapitel \ref{def:testpyramide} Testpyramide veranschaulicht, lässt sich sehr gut erkennen, dass nur ein sehr geringer Teil aus Oberflächentests besteht. Um diese Tests zu automatisieren wurde im Jahre 2004 ein Framework namens Selenium entwickelt, mit dessen Hilfe es möglich ist auf Webelemente zuzugreifen und mit ihnen zu interagieren. Selenium ermöglicht es, Tests auf Basis der Skriptsprache JavaScript, durchzuführen und unterstützt dabei mehrere \gls{browser}. Im Laufe der Entwicklung wurde Selenium immer weiter ausgebaut und unterstützt mittlerweile Programmiersprachen wie etwa Java, C\#, Ruby, Python und JavaScript. Mithilfe dieser Sprachen ist es möglich das Framework zu verwenden und somit auf Webelemente zuzugreifen \autocite{selenium}. 
+
+\subsection{Behavior Driven Development (\acs{BDD})} \label{def:BDD}
+Oft fällt es QA-Mitarbeitern und Abteilungen schwer einen guten Startpunkt in Bezug auf das Testen zu finden und genau zu definieren was alles getestet werden soll und was nicht. Ein Resultat aus dieser Erkenntnis ist, dass die Sprache in der Tests definiert werden eine wichtige Rolle spielen. Eine Technik der agilen Softwareentwicklung ist das sogenannte Behavior Driven Development (\acs{BDD}). Inspiriert durch \autocite{evans2004domain} nutzt \acs{BDD} natürliche Sprache, um Tests zu beschreiben. Mithilfe der natürliche Sprache wird gewährleistet, dass sowohl Stakeholder und Entwickler verstehen, um was es in diesem Test geht \autocite{soeken2012assisted}. 
+\newline\newline
+Da Selenium alleine nur eine Schnittstelle zwischen Webanwendungen und Tests darstellt, reicht Selenium nicht aus, um automatisierte Tests in natürlicher Sprache zu definieren. Aus diesem Grund gibt es die Beschreibungssprache \enquote{Gherkin}. Gherkin ist eine zeilenorientierte Sprache, die ähnlich wie Python Einzüge zur Orientierung nutzt. Der \gls{parser} unterscheidet hierbei die Schlüsselwörter \enquote{Feature}, \enquote{Scenario}, \enquote{Given}, \enquote{When}, \enquote{Then}, \enquote{And} und \enquote{But}. Je nach Framework kann die Sprache angepasst werden \autocite{gherkin}. Wenn beispielsweise Deutsch gewählt wird, werden die Schlüsselwörter wie folgt angepasst:
+
+\begin{itemize}
+	\item Given 	-	Angenommen / Gegeben sei / Gegeben seien
+	\item When	- 	Wenn
+	\item Then	 -	 Dann
+	\item And	 -	 Und
+	\item But	 -	 Aber
+\end{itemize}
+
+Auf Basis von Gherkin gibt es Frameworks, die aufgrund der textuellen Spezifikation, mithilfe einer bestimmten Programmiersprache Tests automatisieren. Einige Beispiele sind:
+
+\begin{itemize}
+	\item Cucumber \autocite{cucumber}
+	\item Lettuce \autocite{lettuce}
+	\item Behave \autocite{behave}
+\end{itemize}
+
+\lstset{style=cypress, caption={Beispieltest Cucumber}, label={lst:cucumber}}
+\begin{lstlisting}
+# language: de
+	
+Funktionalität: Ein einfacher Test zur demonstration
+	Dieser Test dient der Demonstration des Lesers, 
+	damit dieser einen Eindruck davon erhält wie ein 
+	Cucumber Test aussieht.
+		
+	Scenario: Demonstration
+		Angenommen eine Tomate wiegt 100 Gramm
+		Wenn ich diese Tomate halbiere
+		Dann gibt es 2 Stücke mit je 50 Gramm
+\end{lstlisting} 
+
+Jede Zeile innerhalb eines Scenarios führt eine Methode aus, die ein entsprechendes Ergebnis zurück gibt. Die ausführbaren Methoden werden mithilfe einer Programmiersprache wie etwa Python, Ruby oder Java erstellt. Anzumerken ist hierbei, dass das verwendete \acs{BDD}-Framework die Programmiersprache unterstützen muss. Behave unterstützt beispielsweise nur Python \autocite{behave}. 
+\newline\newline
+Innerhalb dieser Methoden kann Selenium verwendet werden, um auf Webelemente zuzugreifen. So können beispielsweise mithilfe von Selenium, Werte aus Eingabefeldern oder Webelementen abgefragt werden. Diese Werte können entsprechend gegen geprüft werden. Entspricht ein Ergebnis nicht dem Erwarteten, wird das entsprechende Scenario mit einem Fehler abgebrochen \autocite{behave}.
+
+\subsection{Pytest} \label{def:Pytest}
+Doch nicht alle Frameworks nutzen Gherkin als Beschreibungssprache. Ein Beispiel hierfür ist Pytest. Pytest lässt sich nicht wie Gherkin lesen, sondern erhält über sogenannte \enquote{\glspl{fixture}} Objekte oder Werte die relevant für den jeweiligen Test sind. Anschließend werden Methoden Zeile für Zeile ausgeführt und daraus generierte Werte mithilfe von \enquote{\glspl{assertion}} geprüft \autocite{pytest}. Eine Assertion (englisch für Behauptung) ist die Aussage eines Zustandes innerhalb eines Programms. 
+
+\newpage
+
+\lstset{style=cypress, caption={fixture\_beispiel.py, enthält die Beispielfixture \enquote{port}}, label={lst:fixture}}
+\begin{lstlisting}
+import pytest
+
+class WebKonfiguration:
+
+	@pytest.fixture
+	def port(self):
+		return 80
+
+\end{lstlisting} 
+
+\lstset{style=cypress, caption={test\_beispiel.py, enthält den Test \enquote{test\_proof\_port}, assert True}, label={lst:pytest1}}
+\begin{lstlisting}
+from fixture_beispiel import WebKonfiguration
+
+class Test(WebKonfiguration):
+
+	def test_proof_port(self, port):
+		assert port == 80
+
+\end{lstlisting} 
+In der Datei \enquote{fixture\_beispiel.py} (siehe Codebeispiel \ref{lst:fixture}) wird mithilfe des Befehls \enquote{class} eine Klasse gebildet, um eine Struktur zu schaffen (siehe Zeile 3). Anschließend wird eine \gls{fixture} mithilfe des \enquote{@pytest.fixture} Befehls erzeugt. Diese \gls{fixture} mit dem Namen \enquote{port}, generiert einen Wert, der zurückgegeben wird (Zeile 7).
+\newline\newline
+Die Datei \enquote{test\_beispiel.py} enthält die eigentlichen Tests (siehe Codebeispiel \ref{lst:pytest1}). Über den Befehl \enquote{from fixture\_beispiel import WebKonfiguration} werden alle \glspl{fixture} der Klasse \enquote{WebKonfiguration} aus der Datei \enquote{fixture\_beispiel.py} importiert und somit nutzbar gemacht. Die soeben importierte Webkonfiguration wird an die Klasse \enquote{Test} übergeben, damit sie von allen hierarchisch folgenden Tests genutzt werden kann.
+\newline\newline
+Der Test \enquote{test\_proof\_port} (siehe Codebeispiel \ref{lst:pytest1}) erhält über den Übergabeparameter \enquote{port} den Rückgabewert der Fixture \enquote{port} (Wert 80, siehe Codebeispiel \ref{lst:fixture} Zeile 7). Innerhalb des Tests wird mithilfe des \enquote{assert}-Befehls überprüft, ob der erwartete Wert dem aus der \gls{fixture} \enquote{port()} gleicht. 
+
+\newpage
+
+Ergibt dieser Vergleich True, wird während der Testausführung folgende Ausgabe generiert:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{06_Bilder/pytest_beispiel_true.png}
+	\setlength{\abovecaptionskip}{0em}
+	\caption{Pytest, Vergleich (Assert) ergibt True}
+	\label{img:pytestexampletrue}
+\end{figure} 
+
+Würde hingegen (siehe Codebeispiel \ref{lst:pytest2}) in Zeile sechs gegenteilig geprüft werden, ergibt sich folgendes:
+
+\lstset{style=cypress, caption={test\_beispiel.py, enthält den Test \enquote{test\_proof\_port}, assert False}, label={lst:pytest2}}
+\begin{lstlisting}
+from fixture_beispiel import WebKonfiguration
+
+class Test(WebKonfiguration):
+
+	def test_proof_port(self, port):
+		assert port != 80
+
+\end{lstlisting} 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{06_Bilder/pytest_beispiel_false.png}
+	\setlength{\abovecaptionskip}{0em}
+	\caption{Pytest, Vergleich (Assert) ergibt False}
+	\label{img:pytestexamplefalse}
+\end{figure} 
+
+Aus dem Kapitel \ref{def:BDD} geht hervor, dass alle erwähnten Frameworks Selenium benötigen um auf Webelemente zuzugreifen (Siehe \autocite{cucumber}, \autocite{lettuce}, \autocite{behave}, \autocite{pytest}). QA-Mitarbeiter haben so zwar eine Auswahl verschiedener Programmiersprachen und Frameworks, sind allerdings bei der Erstellung der Oberflächentests für Webanwendungen auf Selenium angewiesen. 
+
+\section{Cypress}
+Cypress, auch Cypress.io genannt, versucht ein Gesamtpaket zur Erstellung von Oberflächentests für Webanwendungen anzubieten. Anders als alle Frameworks die in Kapitel \ref{def:BDD} beschrieben wurden, ist Cypress nicht auf Selenium angewiesen und verspricht vor allem das Erstellen, Schreiben, Ausführen und Debuggen von Tests zu vereinfachen. Da es ebenfalls ein Funktions- und Akzeptanztesttool für Webanwendungen ist, wird es häufig mit Selenium verglichen \autocite{cypress}. 
+\newline\newline
+Standardmäßig bringt Cypress den sogenannten \enquote{Cypress Test Runner} mit. Dieser listet alle verfügbaren Tests auf, zeigt Testdurchläufe an und ist in der Lage ein Cypress Projekt über die Einstellungen individuell anzupassen. Zusätzlich ist es möglich die aufgelisteten Tests in einem ausgewählten Browser laufen zu lassen. Während der Ausführung, wird im Browser in einer Spalte der Ablauf in Echtzeit übersichtlich dargestellt \autocite{cypress}. 
+\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{06_Bilder/cypress_running_test.png}
+	\setlength{\abovecaptionskip}{0em}
+	\caption{Cypress Test Runner während einer Testausführung}
+	\label{img:cypress_test_runner}
+\end{figure} 
+

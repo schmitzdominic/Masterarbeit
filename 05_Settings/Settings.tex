@@ -1,0 +1,283 @@
+% !TEX root = Settings.tex
+
+%################################################################## COMMANDS
+%##################################################################
+%################################################################## 
+
+\newcommand{\backsl}{\verb|\|} % Backslash
+
+\newcommand{\secline}{\vspace{-1.2em}	% Linie
+	\par\noindent\rule{\textwidth}{0.4pt}} 
+
+\newcommand{\emptysite}{\newpage	% Leere Seite
+	\thispagestyle{empty}
+	\section*{}}
+
+% Glossarzusatz
+\renewcommand{\glossarysection}[2][]{\chapter*{#1}}	
+
+% Abbildungsverzeichnis
+\newcommand{\abbildungsverzeichnis}{\newpage
+	\phantomsection
+	\addstarredchapter{\textbf{Abbildungsverzeichnis}}
+	\listoffigures
+}
+
+% Tabellenverzeichnis
+\newcommand{\tabellenverzeichnis}{\newpage
+	\phantomsection
+	\addstarredchapter{\textbf{Tabellenverzeichnis}}
+	\listoftables
+}
+
+% Acronyme
+\newcommand{\abkuerzungen}{
+	\input{01_Text/Acronym}
+}
+
+% Glossar
+\newcommand{\glossar}{
+	\newpage
+	\phantomsection			
+	\addcontentsline{toc}{chapter}{\textbf{Glossar}}	% Fügt "Glossar" zum Inhaltsverzeichnis hinzu
+	\printglossary[style=altlist,title=Glossar]		% Glossar
+	\newpage
+}
+
+% Heading Style setzen
+\newcommand{\headstyle}{
+	\pagestyle{scrheadings}	% Style
+	\clearscrheadfoot
+	\ofoot[\pagemark]{\pagemark}
+	\ohead{\headmark}
+	\automark[]{chapter}
+	\setheadsepline{1pt}
+	\setfootsepline{0pt}
+}
+
+% Heading Style setzen (Seitenzahl Rechts)
+\newcommand{\headstyleright}{
+	\pagestyle{scrheadings}	% Style
+	\cfoot[]{}	% [plain-Seiten]{normale Seiten} 
+	\ofoot[\pagemark]{\pagemark}	% Seitenzahl
+	\setheadsepline{0pt}
+	\setfootsepline{0pt}
+}
+
+\newcommand{\inhaltsverzeichnis}{
+	\cleardoublepage\pdfbookmark{\contentsname}{toc}
+	\tableofcontents
+	\clearpage
+	\newpage
+}
+
+\newcommand{\literaturverzeichnis}{
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Literatur}	% Überschrift
+	\printbibliography	
+}
+
+\newcommand{\anhangstart}{
+	\newpage
+	\pagenumbering{arabic}	% Arabische Ziffern
+	
+	\renewcommand\appendix{\par 
+		\setcounter{section}{0}% 
+		\setcounter{subsection}{0}% 
+		\setcounter{figure}{0}% 
+		
+		\renewcommand\thesection{\Alph{section}}% 
+		\renewcommand\thefigure{\Alph{section}\arabic{figure}}} 
+	
+	\numberwithin{table}{section} 
+	\numberwithin{figure}{section} 
+	
+	
+	\appendix 
+	\pagestyle{empty}
+	\section*{Allgemeine Ergänzungen}
+	
+	\captionsetup{listof=false}
+}
+
+\newcommand{\roemischenummerierung}{
+	\pagenumbering{Roman}
+}
+
+\newcommand{\arabischenummerierung}{
+	\pagenumbering{arabic}
+}
+
+%################################################################## OTHER
+%##################################################################
+%################################################################## 
+
+\titleformat{name=\chapter,numberless}[display]{\normalfont\huge\bfseries}{\titlerule}{-6,9ex}{}[\vspace{3ex}]
+\titlespacing{name=\chapter,numberless}{0em}{1.0em}{0em}
+\titleformat{\chapter}{\normalfont\huge\bfseries}{\thechapter}{18pt}{\Huge}[{\vspace{0,6ex}\titlerule[0.8pt]\vspace{3ex}}]
+\titlespacing{\chapter}{0em}{-4.0em}{0em} % {left}{before}{after}[right]
+\titleformat{\section}{\normalfont\LARGE\bfseries}{\thesection}{16pt}{\LARGE}
+\titleformat{\subsection}{\normalfont\Large\bfseries}{\thesubsection}{14pt}{\Large}
+\titleformat{\subsubsection}{\normalfont\large\bfseries}{\thesubsubsection}{14pt}{\large}
+
+\addbibresource{04_Literatur/Literatur.bib}
+\AtBeginDocument{\counterwithin{lstlisting}{section}}
+\geometry{a4paper, left=30mm, right=25mm, bottom=25mm, top=25mm}	% Text Formatierung
+\input{01_Text/Glossar}	% Glossar IMPORT
+\setlength{\parindent}{0pt}	% Keine Einrückung am Anfang eines Absatzes
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+%################################################################## LISTINGS
+%##################################################################
+%################################################################## 
+
+\renewcommand{\lstlistingname}{Codebeispiel}% Listing -> Codebeispiel
+\renewcommand{\lstlistlistingname}{Codeverzeichnis}% List of Listings -> Codeverzeichnis
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{superlightgray}{rgb}{0.97,0.97,0.97}
+
+% Java Style
+\lstdefinestyle{java}{
+	language=Java,
+	basicstyle=\ttm,
+	otherkeywords={this},
+	breaklines=true,
+	tabsize=2,
+	keywordstyle=\ttb\color{deepblue},
+	emph={MyClass,__init__},          % Custom highlighting
+	emphstyle=\ttb\color{deepred},    % Custom highlighting style
+	stringstyle=\color{deepgreen},
+	frame=tb,                         % Any extra options here
+	belowskip=3em,
+	belowcaptionskip=1em,
+	aboveskip=2em,
+	abovecaptionskip=1em,
+	captionpos=b,
+	showstringspaces=false 
+}
+
+% Java Script Style
+\lstdefinestyle{travis}{
+	language=bash,
+	numbers=left,
+	stepnumber=5,
+	firstnumber=1,
+	tabsize=2,
+	basicstyle=\ttm,
+	breaklines=true,
+	alsoletter={:},
+	keywords={language:, node_js:, cache:, install:, before_script:, script:},
+	keywordstyle=\ttb\color{orange},
+	emph={MyClass,__init__},          % Custom highlighting
+	emphstyle=\ttb\color{deepred},    % Custom highlighting style
+	stringstyle=\color{deepgreen},
+	frame=single,                         % Any extra options here
+	backgroundcolor=\color{superlightgray},
+	ndkeywords={directories:},
+	ndkeywordstyle=\ttb\color{deepblue},
+	belowskip=2em,
+	aboveskip=2em,
+	abovecaptionskip=1em,
+	captionpos=b,
+	showstringspaces=false 
+}
+
+% Java Script Style
+\lstdefinestyle{cypress}{
+	language=Java,
+	numbers=left,
+	stepnumber=5,
+	firstnumber=1,
+	tabsize=2,
+	basicstyle=\ttm,
+	breaklines=true,
+	keywords={describe, before, beforeEach, context, it, expect, equal, cy, def},
+	keywordstyle=\ttb\color{orange},
+	emph={MyClass,__init__},          % Custom highlighting
+	emphstyle=\ttb\color{deepred},    % Custom highlighting style
+	stringstyle=\color{deepgreen},
+	frame=single,                         % Any extra options here
+	backgroundcolor=\color{superlightgray},
+	ndkeywords={assert, break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+	ndkeywordstyle=\ttb\color{deepblue},
+	belowskip=2em,
+	aboveskip=2em,
+	abovecaptionskip=1em,
+	captionpos=b,
+	showstringspaces=false 
+}
+
+% Python Style
+\lstdefinestyle{python}{
+	language=python,
+	numbers=left,
+	basicstyle=\ttm,
+	otherkeywords={self},
+	keywordstyle=\ttb\color{deepblue},
+	emph={MyClass,__init__},          % Custom highlighting
+	emphstyle=\ttb\color{deepred},    % Custom highlighting style
+	stringstyle=\color{deepgreen},
+	frame=tb,                         % Any extra options here
+	belowskip=3em,
+	aboveskip=2em,
+	abovecaptionskip=1em,
+	captionpos=b,
+	showstringspaces=false  
+}
+
+% Bash Style
+\lstdefinestyle{bash}{
+	language=bash,
+	basicstyle=\ttm,
+	numbers=left,
+	stepnumber=5,
+	firstnumber=1,
+	backgroundcolor=\color{superlightgray},
+	otherkeywords={},
+	keywordstyle=\ttb\color{deepblue},
+	emph={\$},          % Custom highlighting
+	emphstyle=\ttb\color{deepred},    % Custom highlighting style
+	stringstyle=\color{deepgreen},
+	frame=single,                         % Any extra options here
+	showstringspaces=false,
+	belowskip=2em,
+	aboveskip=2em,
+	abovecaptionskip=1em,
+	captionpos=b
+}
+
+%################################################################## DEFINITONS
+%##################################################################
+%################################################################## 
+
+\newtcbtheorem[number within=chapter]{Definition}{}{
+	enhanced,
+	attach boxed title to top left={
+		xshift=-1mm,
+		yshift=-5mm,
+		yshifttext=-1mm
+	},
+	breakable,
+	top=0.5em,
+	bottom=-0.5em,
+	colback=white,
+	colframe=black,
+	fonttitle=\bfseries,
+	boxed title style={
+		size=small,
+		colback=black,
+		colframe=black,
+	} 
+}{def}
+
+\newenvironment{definition}[2]{ \begin{Definition}[adjusted title=#1]{}{#2} 
+		\textbf{} }{\end{Definition}}

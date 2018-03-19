@@ -1,0 +1,131 @@
+\documentclass[12pt]{scrreprt}
+
+%% Allgemeine Hinweise
+% 
+% - Windows benötigt Pearl zum Kompilieren
+% - Guter Editor "TexStudio"
+% - Nicht vergessen jedes Tex Dokument auf ISO-8859-1 zu stellen
+% - Kompilierreihenfolge:
+%		1. Makeglossaries
+%		2. Biber
+%		3. PdfLaTeX
+%		4. Interner PDF-Betrachter
+
+%--------------------------------------------------------------------------
+% LaTeX packages
+%--------------------------------------------------------------------------
+\usepackage[ngerman]{babel}		% Neue Deute Rechtschreibung
+\usepackage{pdfpages}	% PDF Import
+\usepackage{geometry}	% Seitenformatierung (links, rechts usw..)
+\usepackage{url}	% Urls
+\usepackage{ae}		% Bessere Fonts unterstützung
+\usepackage[latin1]{inputenc}	% Lateinisch und wichtig für MAC
+\usepackage[T1]{fontenc}	% Westeuropäische Kodierung
+\usepackage{lmodern}	% Neue deutsche Trennungsregeln, etc 
+\usepackage{mathptmx}	% Schriftart (Times New Roman)
+\usepackage{acronym}	% Acronyme
+\usepackage[onehalfspacing]{setspace}	% Eineinhalb Zeilen Abstand
+\usepackage{titlesec}	% Titel Formatierung
+\usepackage{hyperref}	% Klickbare Links
+\usepackage{minitoc}	% Mini Inhaltsverzeichnis nach jeder Überschrift
+\usepackage[headsepline,footsepline]{scrpage2}	% Kopf und Fußzeilen (Seitenzahl)
+\usepackage{listings}	% Quellcode
+\usepackage{color}	% Farben fürs Listing
+\usepackage{float}	% Bilder zentrieren
+\usepackage[right]{eurosym}
+\usepackage[most]{tcolorbox} % Definitionen
+\usepackage[autostyle, german=quotes]{csquotes}
+\usepackage[backend=biber, style=alphabetic, citestyle=alphabetic]{biblatex}
+\usepackage{chngcntr}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{cleveref} % Definitionen
+\usepackage[nonumberlist,	% Keine Seitenzahlen anzeigen
+						acronym,	% Ein Abkürzungsverzeichnis erstellen
+						toc,	% Einträge im Inhaltsverzeichnis
+						section]	% Im Inhaltsverzeichnis auf section-Ebene erscheinen
+						{glossaries}	% Glossar
+
+%-----------------------------------------------------------------------------
+% Settings
+% ********
+% Anmerkung: Die meisten Kommandos wurden in der 07_Settings/Settings.tex
+% 						Datei erstellt und sollten auch nur dort verändert werden.
+%
+%-----------------------------------------------------------------------------
+\input{05_Settings/Settings}
+
+%-----------------------------------------------------------------------------
+% START OF DOCUMENT														---------------------
+%-----------------------------------------------------------------------------
+\begin{document}
+
+% Deckblatt & Einverständnisserklärung
+\includepdf[pages={1}]{03_PDFs/Deckblatt.pdf}
+\includepdf[]{03_PDFs/Erstellungserklaerung.pdf}
+
+% Seitenzahlformatierung (rechts)
+\headstyleright
+
+% Römische Ziffern
+\roemischenummerierung
+
+% Setze Seitenzahl
+\setcounter{page}{3}	
+
+% Danksagung
+\input{01_Text/Danksagung}
+
+% Kurzfassung
+\input{01_Text/Kurzfassung}
+
+% Inhaltsverzeichnis
+\inhaltsverzeichnis
+
+% Kopf und Fußzeile
+\headstyle
+
+% Abbildungsverzeichnis
+\abbildungsverzeichnis
+
+% Tabellenverzeichnis
+\tabellenverzeichnis
+
+% Acronyme
+\abkuerzungen
+
+% Glossar
+\glossar
+
+% Arabische Ziffern
+\arabischenummerierung
+
+
+%-----------------------------------------------------------------------------
+% HAUPTARBEIT																	HAUPTARBEIT
+%-----------------------------------------------------------------------------
+\input{01_Text/Einleitung}
+\input{01_Text/StandDerTechnik}
+\input{01_Text/Installation}
+\input{01_Text/Einfuehrung}
+\input{01_Text/Automatisierung}
+\input{01_Text/Vergleich}
+\input{01_Text/Fazit}
+
+% Römische Ziffern
+\roemischenummerierung
+
+% Setze Seitenzahl
+\setcounter{page}{13}
+
+% Literatur
+\literaturverzeichnis
+	
+% Anhang
+\input{01_Text/Anhang}
+
+%-----------------------------------------------------------------------------
+% END OF DOCUMENT														  ---------------------
+%-----------------------------------------------------------------------------
+\end{document}
+

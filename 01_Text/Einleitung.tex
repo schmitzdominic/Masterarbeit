@@ -1,0 +1,25 @@
+% !TEX root = Einleitung.tex
+
+\chapter{Einleitung}
+
+\section{Motivation}
+Je umfangreicher und komplexer Software-Systeme sind, desto fehleranfälliger werden diese. Jedes softwareproduzierende Unternehmen bemüht sich daher, eine entsprechend hohe Qualität zu gewährleisten, damit der Kunde letztendlich kein fehlerhaftes Produkt erhält. Aus diesem Grund ist es essenziell, Software auf ihre Funktionalität hin zu testen. 
+\newline\newline
+Die vielen Abhängigkeiten innerhalb moderner Software-Systeme machen es notwendig nach jeder Änderung am Quellcode, die betroffenen Bereiche erneut zu testen. Das wiederum führt zu einem enormen Aufwand, da häufig das komplette Produkt wiederholt getestet werden muss \autocite{softwarequalitaet}. Durch die Automatisierung von Tests versprechen sich viele Unternehmen eine Zeitersparnis des Aufwandes. Daher wird meistens eine Kombination aus bestimmten Frameworks verwendet, die in Verbindung ganze Webanwendungen testen können und in der Lage sind, alle Funktionalitäten und Abhängigkeiten einer Software zu testen.
+
+\section{Zielsetzung}
+Ziel dieser Arbeit ist die Evaluation eines neuen Frameworks namens \enquote{Cypress} (auch Cypress.io genannt), um den Testaufwand bei der glomex GmbH zu verringern. Mithilfe von Cypress ist es möglich Oberflächen von Webanwendungen (graphisch) im Browser zu testen. Bisher wurde hierfür die Programmiersprache Python in Verbindung mit Selenium und Pytest verwendet. Da alle Produkte der glomex beim Kunden zum Einsatz kommen, sind während der Produktentwicklung andere Browserplattformen zu behandeln als im Unternehmen selbst. Es sollen alle wichtigen Unterschiede und eventuelle positive sowie negative Aspekte von Cypress gegenüber dem momentanen System herausgearbeitet und aufgezeigt werden.  Des Weiteren wird ermittelt, ob und wie sich die neuen Tests automatisiert ausführen lassen und inwiefern Cypress Lösungen in diesem Bereich bereitstellt. 
+
+\newpage
+
+\section{Das Unternehmen glomex GmbH}
+Das Unternehmen glomex GmbH, im Weiteren glomex genannt, ist eine Tochter der ProsiebenSat1. Media Se mit Hauptsitz in der Landsberger Str. 110 in München. Die glomex ist ein technischer Dienstleister zur Onlineverbreitung von Premium Videos. Das Unternehmen ermöglicht es Anbietern und Verbreitern von Videos, Inhalte zu syndizieren. In Form einer cloudbasierten Transaktionsplattform wird dazu die technische Infrastruktur zur Verfügung gestellt. Auf dieser Plattform, ist es möglich Videos zur Verfügung zu stellen, die wiederum von Verbreitern (Publishern) auf ihren Websites oder Apps eingebunden werden können. Um dies zu ermöglichen, bietet die glomex außerdem eine Video-Delivery-Infrastruktur zur Verbreitung von Videos, mit deren Hilfe der weltweite Content distribuiert und monetarisiert wird. Durch die signifikante Steigerung der Reichweite werden neue Umsätze erschlossen und gleichzeitig die Betriebskosten für Videoauftritte und Verbreitung reduziert \autocite{glomexAbout}.\\\\ 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{06_Bilder/glomex.png}
+	\setlength{\abovecaptionskip}{-1em}
+	\caption{glomex Webseite (Quelle: \autocite{glomex})}
+	\label{img:glomex}
+\end{figure} 
+

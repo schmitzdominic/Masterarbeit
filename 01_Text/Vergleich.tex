@@ -1,0 +1,289 @@
+% !TEX root = Vergleich.tex
+
+\chapter{Vergleich}
+Dieses Kapitel soll die wesentlichen Unterschiede des momentan bei der glomex verwendeten Systems Selenium in Verbindung mit Pytest und Python gegenüber Cypress ermitteln. Anzumerken ist hierbei, dass ausschließlich Webplayer Tests für diese Arbeit verwendet werden. Anschließend sollen diese Unterschiede übersichtlich und nachvollziehbar dargestellt werden. 
+
+\section{Momentanes System} \label{def:Selenium_momentan}
+Wie bereits beschrieben, besteht das momentan eingesetzte System aus einer Mischung zwischen Selenium, Python und Pytest. Hierbei übernehmen die folgenden Komponenten die folgenden Aufgaben:
+
+\begin{itemize}
+	
+	\item \textbf{Pytest (siehe Kapitel \ref{def:Pytest})}\\
+	Mithilfe von Pytest werden die Tests nachvollziehbar geschrieben.
+	
+	\item \textbf{Selenium (siehe Kapitel \ref{def:Selenium})}\\
+	Selenium ermöglicht es auf Webelemente zuzugreifen und mit ihnen zu interagieren.
+	
+	\item \textbf{Python}\\
+	Python ist eine Programmiersprache und schafft somit die Logik des Tests (Klassen, Methoden, Schleifen etc.).
+	
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{06_Bilder/Selenium_umgebung.png}
+	\setlength{\abovecaptionskip}{1em}
+	\caption{Test Umgebung}
+	\label{img:selenium_umgebung}
+\end{figure}
+
+\newpage
+\section{Konzept Vergleich} \label{def:konzept_vergleich}
+Beide Frameworks (Selenium und Cypress) verfolgen ein Konzept um Webanwendungen zu testen. Selenium interagiert mithilfe eines Treibers direkt mit dem Browser. Das setzt voraus, dass der jeweilige Treiber des Browsers installiert und konfiguriert ist. Es gibt eine Selenium IDE, mit deren Hilfe es möglich ist, einzelne Schritte zu automatisieren. Diese ist allerdings nur als \gls{plugin} für den Browser Mozilla Firefox erhältlich und eher für die Erstellung eines einfachen Skripts oder zur Unterstützung des explorativen Testens (siehe Kapitel  \ref{def:ExplorativerTest}) gedacht. Um allerdings lokale Tests zu schreiben, die mithilfe eines Servers automatisiert ausgeführt werden können, wird Selenium für eine bestimmte Programmiersprache benötigt \autocite{seleniumIDE}. 
+\\\\
+Einen anderen Ansatz versucht Cypress zu realisieren. Cypress Tests werden zwar lokal mithilfe des Cypress Test Runners (siehe Kapitel \ref{def:cypress_test_runner}) gestartet, aber direkt im Browser ausgeführt, was dazu führt, dass auch während der Testausführung auf die Funktionen des Browsers zugegriffen werden kann. Ein weiterer Vorteil ist der geringe Konfigurationsaufwand, da nicht erst ein Treiber installiert und konfiguriert werden muss \autocite{cypress}.
+\\\\
+Um herauszufinden, welches Konzept sich besser für den Einsatz der glomex eignet, wurden verschiedene Kriterien aufgestellt. Die Kriterien wurden aufgrund von Erfahrungen eines sechsmonatigen Praktikums innerhalb der \acs{QA}-Abteilung und der Befragung von \acs{QA}-Mitarbeitern ermittelt. 
+
+\begin{itemize}
+	
+	\item \textbf{Installation}\\
+	Um Tests lokal zu entwickeln und auszuführen, wird eine Installation und Konfiguration des jeweiligen Frameworks benötigt. Besonders in Unternehmen oder Projekten, bei denen die Fluktuation sehr hoch ist, ist eine einfache, kurze und nachvollziehbare Installation von Relevanz.
+	
+	\item \textbf{Abhängigkeiten}\\
+	Jeder Test, der mithilfe eines der Frameworks entwickelt wird, muss ausführbar sein. Die Frage bei diesem Kriterium ist, in wie fern das eingesetzte Framework abhängig von weiteren Frameworks, Programmiersprachen und Tools ist, bis sich dieses ausführen lässt. Desto mehr Software vorhanden sein muss, desto höher ist die Komplexität. Das kann dazu führen, dass die Ursachen entstandener Fehler aufgrund des zusammenspiels mehrerer Komponenten nur schwer zu identifizieren sind.
+	
+	\newpage
+	
+	\item \textbf{Ausführung während der Testerstellung}\\
+	Während der Testerstellung wird ein Test mehrfach wiederholt. Hier stellt sich die Frage, ob das verwendete Framework in Echtzeit Änderungen im Code erkennt und anzeigt, oder bei jeder Änderung der Test nur über Umwege ausgeführt und überprüft werden kann.
+	
+	\item \textbf{Kompatibilität}\\
+	Eines der wichtigsten Kriterien ist die Kompatibilität, da Unternehmen wie die glomex darauf angewiesen sind, auf so vielen Plattformen wie Möglich zu testen. Nur so kann gewährleistet werden, dass Software weitestgehend fehlerfrei beim Anwender ausgeliefert wird. Im Rahmen dieser Arbeit spielt dabei das sogenannte \gls{crossBrowser} eine Rolle. \gls{crossBrowser} testet eingebetteten Inhalt wie etwa einen Webplayer auf mehreren Browsern, um zu gewährleisten, dass dieser sich unabhängig vom Browsertyp identisch verhält \autocite{crossBrowser}.
+	
+	\item \textbf{iFrame Support}\\
+	Ein weiterer Punkt ist der Support von sogenannten \enquote{iFrames}, auch \enquote{Inlineframes} genannt. Ein \gls{iframe} dient der Strukturierung von Webseiten und stellt weitere Webinhalte als eigenständige Dokumente innerhalb eines definierten Bereichs eines Browsers dar \autocite{iFrame}. Da alle Produkte der glomex \glspl{iframe} zur Darstellung benutzen, ist der Support des Frameworks entsprechend wichtig.
+	
+\end{itemize}
+
+Jedes der beiden Frameworks wird nun auf das jeweilige Kriterium geprüft und verglichen. Dabei erhalten beide Frameworks jeweils eine Punktzahl zwischen 1 (schlecht) bis 3 (gut). Mithilfe dieser vergebenen Punkte wird bei der Auswertung eine Gesamtpunktzahl ermittelt. Mit diesen ist es möglich, dass für die glomex geeignetere Framework zu ermitteln. 
+
+\begin{itemize}
+	
+	\item \textbf{Installation}\\
+	Wie bereits in Kapitel \ref{def:installation} beschrieben ist es möglich Cypress auf allen gängigen Betriebssystemen wie Linux, Mac OS und Windows zu installieren. Cypress bringt mit der Installation alles mit, um Tests zu erstellen und auszuführen. Zusätzlich benötigt die Installation kaum Vorwissen und ist auf der Seite \autocite{cypress} nachvollziehbar erläutert. Die Installation des Cypress Test Runners ist mit wenig Aufwand nach kurzer Zeit abgeschlossen. Ein weiterer positiver Aspekt ist, Cypress warnt sobald eine neuere Version verfügbar ist und lässt sich mit nur wenig Aufwand updaten (siehe Kapitel \ref{def:cypress_update}).
+	
+	\newpage
+	
+	Selenium unterstützt wie auch Cypress alle gängigen Betriebssysteme, beinhaltet allerdings nicht alle benötigten Komponenten um Tests zu entwickeln. Um Selenium zu nutzen, muss vorher festgelegt werden, in welcher Programmiersprache die Tests später entwickelt werden. Ist dies geschehen, muss die benötigte Programmiersprache, das dazu passende Selenium Paket und der Treiber installiert werden. Anschließend muss der Treiber konfiguriert werden \autocite{seleniumInstallation}.
+	\\\\
+	Der Vergleich zeigt deutlich, das Cypress großen Wert auf eine einheitliche, einfache und komplette Installation legt und erhält daher 3 Punkte. Bei der Installation von Selenium gestaltet sich die Installation im Vergleich deutlich aufwendiger, da dieser die Installation und Konfiguration mehrerer Komponenten zugrunde liegt, was nur zu einer Bewertung von einem Punkt geführt hat.
+	
+	\begin{itemize}
+		\item Cypress \textbf{3 Punkte}
+		\item Selenium \textbf{1 Punkt}\\
+	\end{itemize}
+	
+	\item \textbf{Abhängigkeiten}\\
+	Während der Installation wird erläutert, dass Cypress bereits alles an Software mitbringt, um Tests auszuführen. Somit werden alle Abhängigkeiten durch die Installation beseitigt. Um allerdings Tests komfortabel zu erstellen, wird eine entsprechende \acs{IDE} wie etwa Visual Studio Code angeraten (siehe Kapitel \ref{def:visual_studio}).
+	\\\\
+	Mindestens eine Programmiersprache wird dagegen von Selenium benötigt. In der Realität ist das allerdings nicht die einzige Abhängigkeit. Selenium alleine führt nur Befehle aus, die an den Browser geschickt werden, um den Browser zu steuern \autocite{selenium}. Aus diesem Grund muss ein entsprechender Treiber für jeden Browser, der genutzt werden will, vorhanden und konfiguriert sein. Zusätzlich werden in der Praxis häufig zusätzlich \acs{BDD}-Frameworks verwendet (siehe Kapitel \ref{def:BDD}), um die Nachvollziehbarkeit eines Tests zu verbessern. 
+	\\\\
+	Bezüglich der Abhängigkeiten hat Cypress einige Vorteile gegenüber Selenium, da die Hersteller darauf geachtet haben alles an Software das zur Ausführung von Tests benötigt wird, direkt mit zu installieren. Da Cypress so gesehen keine Abhängigkeiten aufweist, erhält das Framework 3 Punkte. Selenium hingegen erhält nur einen Punkt, da alleine ohne Konfiguration und Installation weiterer Programmiersprachen und Treiber keine Tests entwickelt werden können.
+	
+	\begin{itemize}
+		\item Cypress \textbf{3 Punkte}
+		\item Selenium \textbf{1 Punkt}\\
+	\end{itemize}
+	
+	\item \textbf{Ausführung während der Testerstellung}\\
+	Während der Testerstellung ermöglicht der Cypress Test Runner einen parallelen Testablauf im Browser. So wird nach jeder Änderung am Quellcode direkt der Test erneut ausgeführt und der Entwickler erhält Feedback, ob die Änderung die gewünschte Wirkung erzielt hat. Da zusätzlich der Cypress Test Runner im Browser läuft, hat der Entwickler Zugriff auf alle Entwicklerfunktionen die Seitens des Browser zur Verfügung gestellt werden.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{06_Bilder/cypress_test_runner_running.png}
+		\setlength{\abovecaptionskip}{0em}
+		\caption{Cypress Test Runner während der Ausführung des Tests \enquote{test\_player.js}}
+		\label{img:cypress_test_runner_running}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{06_Bilder/cypress_browser_running.png}
+		\setlength{\abovecaptionskip}{0em}
+		\caption{Testausführung des Tests \enquote{test\_player.js} im Browser Google Chrome}
+		\label{img:cypress_browser_running}
+	\end{figure}
+
+	Aus dem Grund, das Selenium alleine nicht ausgeführt werden kann, wird das momentane System als Referenz verwendet (siehe Kapitel \ref{def:Selenium_momentan}). Bei dem momentanen System wird Selenium mithilfe von Pytest in Verbindung mit der Programmiersprache Python ausgeführt. Pytest erkennt keine Änderungen im Code, was dazu führt, dass jeder Test manuell nach jeder Änderung neu gestartet werden muss. Das kann dazu führen, dass der Entwickler Fehler übersieht, da ihm diese nicht direkt angezeigt werden. Da Selenium nur Befehle an den Browser schickt, die anschließend ausgeführt werden, muss weiterhin eine zusätzliche Browserinstanz geöffnet bleiben, um über die Entwicklerkonsole neue Webelemente zu identifizieren.
+	\\\\  
+	Aufgrund der Komfortabilität, Lauffähigkeit im Browser und aktiven Testausführung während der Entwicklung erhält Cypress drei Punkte. Da im Rahmen dieser Arbeit nur das momentane System betrachtet wird und es sehr viele verschiedene Kombinationen der Frameworks gibt, ist nicht ausgeschlossen, dass eine Frameworkkombination (inklusive Selenium) mit einer hohen Komfortabilität und aktiven Testausführung existiert. Selenium allerdings kann nicht im Browser ausgeführt werden, was zu einer Punktzahl von zwei Punkten führt.
+	
+	\begin{itemize}
+		\item Cypress \textbf{3 Punkte}
+		\item Selenium \textbf{2 Punkte}\\
+	\end{itemize}
+	
+	\item \textbf{iFrame Support}\\
+	Seitens Cypress gibt es keinen vollen iFrame-Support (stand 27.02.2018). Cypress arbeitet bereits an dem Problem. Intern trägt es die Problemnummer 136 (englisch Issue \#136). In der Offiziellen Dokumentation (zu finden unter \autocite{cypressIssue136}) wird folgendes geschrieben:
+	\\
+	
+	\begin{definition}{Zitat aus \autocite{cypressIssue136}}{def:definitionIframeSupport}
+		\\ You cannot target elements or interact with anything in an iframe - regardless of it being a same domain or cross domain iframe.\\
+		
+		This is actively being worked on in Cypress and you'll first see support for same domain iframes, followed by cross domain (they are much harder to do).\\
+		
+		\textbf{Workaround:}
+		
+		Sit tight, comment on the issue so we know you care about this support, and be patient.\\
+	\end{definition}
+
+	Da die Produkte der glomex iFrames benutzen, muss eine Lösung für dieses Problem gefunden werden. Als \gls{workaround} wird empfohlen sich direkt über den Github \gls{thread} \autocite{cypressGithubIssue136} an die Entwickler zu wenden. Innerhalb des \glspl{thread} werden bereits einige Lösungsvorschläge bereitgestellt, daher ist eine Kontaktaufnahme nicht nötig. 
+	\\\\
+	Der in dieser Arbeit verwendete \gls{workaround} sieht vor, einen neuen Befehl zu erstellen (siehe \ref{def:cypress_projektstruktur}, Support). Der erstellte Befehl soll auf ein übergebenes \gls{iframe} zugreifen und es als eine Referenz zurück geben, die dann innerhalb eines Alias gespeichert wird. Ein Alias beschreibt in dieser Arbeit, einen Namen für eine Referenz auf ein Objekt.
+	
+	\lstset{style=cypress, caption={Eigener Befehl \enquote{iframe}}, label={lst:befehl_iframe}}
+	\begin{lstlisting}
+Cypress.Commands.add('iframe', 
+  (locator, element, wait=10000) => {
+	  
+	return cy.get('iframe',  { timeout: wait })
+	  .should('have.class', locator)
+	  .should(($iframe) => {
+	  	expect($iframe.contents().find(element)).to.exist
+	  }).then(($iframe) => {
+	  	return cy.wrap($iframe.contents().find("body"))
+	  });
+		  
+})
+	\end{lstlisting} 
+	
+	Wie in Zeile zwei im Codebeispiel \ref{lst:befehl_iframe} dargestellt, werden die folgenden drei Parameter an den Befehl \enquote{iframe} übergeben:
+	
+	\begin{itemize}
+		\item \textbf{locator}\\
+		 Der \gls{locator} der das \gls{iframe} Element eindeutig adressiert. Ein Beispiel hierfür könnte der Klassenname des \glspl{iframe} sein.
+		
+		\item \textbf{element}\\
+		Ein Element innerhalb des \glspl{iframe}, um zu gewährleisten, dass auf Elemente innerhalb zugegriffen werden kann.
+		
+		\item \textbf{wait}\\
+		Die Zeit, wie lange gewartet wird, bis das \gls{iframe} Element gefunden werden muss. Standard hier sind 10000 Millisekunden, was 10 Sekunden entspricht. 
+		
+	\end{itemize}
+
+	\newpage
+
+	Weiterhin ab Zeile vier im Codebeispiel \ref{lst:befehl_iframe} ist zu sehen, dass mithilfe des \enquote{get}-Befehls auf das \gls{iframe} zugegriffen wird. Über \enquote{should} wird zusätzlich geprüft, ob es sich hierbei um das übergebene \gls{iframe} handelt. 
+	Seit Version 0.20.0 kann mit \glspl{iframe} über den \enquote{wrap}-Befehl (siehe Codebeispiel \ref{lst:wrap}) interagiert werden \autocite{cypressChangelog}. Vollständiger Zugriff, damit Cypress innerhalb eines \glspl{iframe} ausgeführt werden kann, ist noch nicht möglich, wird aber in Aussicht gestellt (Stand 27.02.2018). Der eigentliche \gls{workaround} findet in der Zeile sieben (siehe Codebeispiel \ref{lst:befehl_iframe}) statt. Hier wird mit dem wrap-Befehl auf den Content (body) des \glspl{iframe} zugegriffen und anschließend zurück gegeben. 
+
+	\lstset{style=cypress, caption={erster\_test.js, Quellcode}, label={lst:testausfuehrung}}
+\begin{lstlisting}
+describe('Player Test', function() {
+
+ beforeEach(function(){
+	// Fixtures aus anderen Dateien laden
+	cy.fixture('kraken/locators.json').as('locator')
+	cy.fixture('kraken/web.json').as('web')
+	cy.fixture('kraken/settings.json').as('setting')
+ })
+
+ context('Kraken', function(){
+   
+  it('With Ads', function(){
+  
+	   // Aufruf der Kraken-Webseite
+	  cy.visit(this.web.krakenUrl)
+	  
+	  // iFrame mit dem Alias "player" (siehe .as(player))
+	  cy.iframe(this.locator.playerIframe, "#player")
+	    .as('player')
+	    
+	  // Rufe den Alias mithilfe von ".get" auf, 
+	     finde das Webelement und klicke auf Play
+	  cy.get("@player").find(this.locator.playButton)
+	    .click()
+   }) 
+  })
+})
+\end{lstlisting} 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\textwidth]{06_Bilder/cypress_testausfuehrung_browser.png}
+	\setlength{\abovecaptionskip}{0em}
+	\caption{erster\_test.js, Testausführung im Browser mithilfe des Cypress Test Runners}
+	\label{img:cypress_testausfuerung_browser}
+\end{figure}
+
+	Codebeispiel \ref{lst:testausfuehrung} zeigt, wie der im Codebeispiel \ref{lst:befehl_iframe} erstellte Befehl angewendet wird. Erst wird mithilfe des \enquote{visit}-Befehls in Zeile 20 auf die Webseite zugegriffen. In Zeile 23 wird der Befehl \enquote{iframe} aufgerufen. Während des Aufrufs wird der \gls{locator} (this.locator.playerIframe) und ein Webelement, das sich innerhalb des \glspl{iframe} befindet (\#player) an den Befehl übergeben. Dabei ist anzumerken, dass innerhalb eines css Selektors eine Raute auf eine id hinweist. So bedeutet in unserem Beispiel \#player, das der Test nach dem Webelement mit der id \enquote{player} auf der aufgerufenen Webseite suchen soll. Anschließend wird mit dem Befehl \enquote{as} ein Alias erstellt. Dieser Alias kann nun weiterhin verwendet werden und repräsentiert das komplette \gls{iframe} des Players. Zu erwähnen ist, dass der Alias bis zum ende des it-Blocks bestehen bleibt. 
+	\\\\
+	In Zeile 27 des Codebeispiels \ref{lst:testausfuehrung} ist sehr gut zu erkennen, dass mithilfe des \enquote{@} Zeichens der Alias, an den get-Befehl übergeben wird. Folgend kann durch den find-Befehl ein Webelement innerhalb des \glspl{iframe} gesucht und geklickt (.click()) werden. 
+	\\\\
+	Da es einen \gls{workaround} für Cypress gibt mit dessen Hilfe es möglich ist auf \glspl{iframe} zuzugreifen, erhält Cypress für dieses Kriterium 2 Punkte. Selenium dagegen supportet \glspl{iframe} vollständig. Der Befehl \enquote{switchTo()} erlaubt es dem Selenium Treiber, direkt das \gls{iframe} aufzurufen und mit ihm zu interagieren. Aus diesem Grund erhält Selenium 3 Punkte.
+
+	\begin{itemize}
+		\item Cypress \textbf{2 Punkte}
+		\item Selenium \textbf{3 Punkte}\\
+	\end{itemize}
+	
+	\item \textbf{Kompatibilität}\\
+	Das beschriebene \gls{crossBrowser} ist mit Cypress momentan nicht möglich (siehe Offiziellen Post \autocite{cypressGithubIssue310}), da Cypress nur den Browser \enquote{Google Chrome} (Chrome, Chronium und Canary) unterstützt. Die Entwickler stellen aber die Verwendung weiterer Browser in Aussicht (siehe \autocite{cypressGithubIssue310}) für zukünftige Versionen. Zum  momentanen Zeitpunkt (Stand 27.02.2018) ist dies allerdings nicht möglich.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth]{06_Bilder/cypress_browser.png}
+		\setlength{\abovecaptionskip}{-1em}
+		\caption{Unterstützte Browser im Cypress Test Runner (Stand 27.02.2018 V2.0.4)}
+		\label{img:cypress_browser_running}
+	\end{figure}
+
+	Offiziell unterstützt dagegen Selenium alle gängigen Browser wie \enquote{Firefox}, \enquote{Microsoft Internet Explorer}, \enquote{Safari}, \enquote{Opera} und \enquote{Google Chrome}.
+	\\\\
+	Um ein Webelement anzusprechen, werden bei beiden Frameworks sogenannte \enquote{\gls{locator}s} verwendet. Ein \gls{locator} beschreibt ein HTML Element, beispielsweise mithilfe einer id, eines Klassennamens, weiterer Attribute oder eines Xpaths um dem Framework exakt zu beschreiben, welches Webelement einer Webseite verwendet werden soll. Cypress unterstützt derzeit (Stand 22.02.2018) nur css Selektoren um ein Webelement zu beschreiben \autocite{cypress}.
+	\\\\
+	
+	\newpage
+	
+	Verschiedene Arten unterstützt dagegen Selenium. Laut \autocite{seleniumLocators} ist es möglich über folgende Arten ein Webelement zu erreichen:
+	
+	\begin{itemize}
+		\item id
+		\item Name
+		\item Linktext
+		\item Partial Linktext
+		\item Tag Name
+		\item Class Name
+		\item Css
+		\item Xpath
+	\end{itemize}
+
+	Die genaue Beschreibung jeder Möglichkeit kann auf \autocite{seleniumLocators} nachgelesen werden.
+	\\\\
+	Das Cypress noch relativ neu im Vergleich zu Selenium ist, wird deutlich im Vergleich der Kompatibilität. Besonders da \gls{crossBrowser} seitens Cypress aktuell (Stand 22.02.2018) nicht supported wird, ist es schwer für Unternehmen ihre Anwendungen plattformübergreifend zu Testen. Das ist besonders problematisch, da diese nicht garantieren können das die Anwendung fehlerfrei beim Anwender funktioniert. Aufgrund dessen erhält Cypress im Vergleich nur einen Punkt. Selenium dagegen supported alle gängigen Browser und \gls{locator}-Arten, was zu einem Ergebnis von drei Punkten führt. 
+	
+	\begin{itemize}
+		\item Cypress \textbf{1 Punkt}
+		\item Selenium \textbf{3 Punkte}\\
+	\end{itemize}
+	
+\end{itemize}
+
+\subsection{Auswertung}
+
+Nachdem alle Kriterien aufgestellt und analysiert wurden, muss nun ausgewertet werden, welches der beiden Frameworks sich besser für den Einsatz bei der glomex eignet. Um dies zu ermitteln, wird eine Tabelle mit allen Punkten je Kriterium dargestellt. Die Kriterien Kompatibilität und \gls{iframe} Support werden jeweils doppelt gewichtet, da alle Produkte der glomex auf diversen Browsern getestet werden und \glspl{iframe} benutzen.\\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| l |c|c|c|}
+		\hline
+		\textbf{Kriterium}    & \textbf{Gewichtung}		& \textbf{Selenium} & \textbf{Cypress} \\ \hline
+		Installation          & einfach                 & 1		   & 3		 \\
+		Abhängigkeiten        & einfach             	& 1		   & 3		 \\
+		Ausführung während der Testerstellung & einfach & 2		   & 3		 \\
+		\textbf{Kompatibilität}        & \textbf{doppelt}             	& \textbf{6}		   & \textbf{4}		 \\
+		\textbf{iFrame Support}        & \textbf{doppelt}             	& \textbf{6}		   & \textbf{2}		 \\ \hline
+		Gesamt				  &							& \underline{\underline{\textbf{16}}}	   & \underline{\underline{15}}		 \\ \hline
+	\end{tabular}
+	
+	\caption{Framework Auswertung anhand Kriterien}
+	\label{tbl:auswertung}
+	
+\end{table}
+
+Wie in Tabelle \ref{tbl:auswertung} dargestellt, schneidet Selenium in den Punkten Installation, Abhängigkeiten und Ausführung während der Testerstellung schlecht bis mittelmäßig ab. Das liegt vor allem daran, dass die Installation von Selenium mit diversem Konfigurationsaufwand und der Installation weiterer Frameworks und Programmiersprachen verbunden ist. Ohne eine weitere Programmiersprache kann Selenium nur als Plugin für Mozilla Firefox (siehe Selenium IDE \autocite{seleniumIDE}) genutzt werden. \glspl{iframe} unterstützt Selenium nativ mithilfe des \enquote{switchTo()} Befehls. Mit ihm ist es möglich direkt den Fokus des Treibers auf das iFrame zu legen. Selenium funktioniert mit allen gängigen Browsern, was sehr von Vorteil ist, da alle Produkte der glomex browserunabhängig funktionieren sollen. 
+\\\\
+Cypress wird ständig weiterentwickelt und ist im Gegensatz zu Selenium noch relativ frisch auf dem Markt (Stand 01.03.2018). Die Entwickler legen großen Wert auf Komfortabilität und Übersichtlichkeit, was sich in der Struktur und Einfachheit der Installation widerspiegelt. Entwickler können während der Erstellung und Bearbeitung der Tests genau sehen und nachvollziehen, ob ein Test funktioniert oder nicht, da Cypress nach jeder Änderung den jeweiligen Test erneut ausführt. Der \gls{iframe} Support wurde bereits teilweise umgesetzt (siehe Codebeispiel \ref{lst:befehl_iframe}). Leider fehlt noch eine native Lösung im Bezug auf \glspl{iframe}, um es Cypress direkt zu ermöglichen in das \gls{iframe} zu wechseln und nicht nur mit ihm zu interagieren \autocite{cypressGithubIssue136}. Ein wichtiger Punkt ist zusätzlich die Kompatibilität. Stand 27.02.2018 Version 2.0.4 ist es nicht möglich einen anderen Browser als Google Chrome für Tests zu verwenden \autocite{cypressGithubIssue310}. Es wurde bereits bestätigt das \gls{crossBrowser} zukünftig implementiert wird. 
+\\\\
+Aufgrund der beschriebenen Defizite seitens Cypress ist (Stand 01.03.2018) das momentane System mit 16 (Selenium) gegenüber 15 (Cypress) Punkten besser für den Einsatz bei der glomex geeignet (siehe Tabelle \ref{tbl:auswertung}). Werden in zukünftigen Versionen allerdings die Mängel in Richtung Kompatibilität und \gls{iframe} Support behoben, wird Cypress zur deutlich besseren und komfortableren Wahl. 
+
