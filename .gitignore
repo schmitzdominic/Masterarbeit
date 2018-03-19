@@ -17,5 +17,5 @@
 *.mtc*
 *.out
 *.run.xml
-*.xynctex.gz
+*.synctex.gz
 *.toc
