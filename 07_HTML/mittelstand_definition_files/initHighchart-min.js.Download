@@ -1,0 +1,1 @@
+(function(){$.each($(".highchart-container"),function(d){var a=$(this);var c=a.data("options");var b=a.attr("id")+"-"+d;a.attr("id",b);if(a.data("height")){a.height(a.data("height"))}c.chart.renderTo=b;new Highcharts.Chart(c)})})();

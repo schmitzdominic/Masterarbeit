@@ -1,0 +1,98 @@
+.evt-teaser ul.events li.event div.event {
+    width: 100%;
+}
+
+/* I-190360*/
+form label p {
+    float: left;
+}
+
+
+
+.intro {
+    font-size: 1.0em;
+}
+
+/* Ticket I-185879 Anfang*/
+  .strong {
+    font-size: 17px;
+  }
+/* Ticket I-185879 Ende*/
+
+
+.mwf-form fieldset {
+    display: block;
+    float: left;
+    width: 100%;
+} 
+
+ol.rte-list ol.rte-list,
+ol.rte-list ol.rtelist ol.rte-list,
+ul.rte-list ul.rte-list,
+ul.rte-list ul.rtelist ul.rte-list { 
+ font-size: 1em; 
+}
+
+/* Ticket I-171750 Anfang*/
+.dl-wrapper ul .dl-download .text-wrapper .head {
+    font-size: 1.0625em;
+}
+/* Ticket I-171750 Ende*/
+
+
+/* Ticket SR-092562 Anfang*/
+.swiper-wrapper ul.fb-gallery {
+    margin-left: 15px;
+    margin-right: -15px;
+}
+/* Ticket SR-092562 Ende*/
+
+
+
+
+
+/* Korrektur Abstand Inhaltsverzeichnisse Anfang*/
+@media (min-width: 641px) {
+.richtext .mll-teaser #titles li:last-child {
+margin-bottom: 20px !important;
+}
+}
+/* Korrektur Abstand Inhaltsverzeichnisse Ende*/
+
+
+/*Korrektur Originalbild verwenden IHK-3594 Anfang*/
+.img-disable-cropping {
+min-width: 0px;
+min-height: 0px;
+height: auto !important;
+width: auto !important;
+max-width: 100%;
+max-height: none;
+}
+/*Korrektur Originalbild verwenden IHK-3594 Ende*/
+
+/*Korrektur zu großer Weißraum in der mobilen Ansicht I-176187 Anfang*/
+.page.home .page-wrapper {
+    padding-top: 1px !important;
+}
+/*Korrektur zu großer Weißraum in der mobilen Ansicht I-176187 Ende*/
+
+
+/* Ticket SR-087387 Anfang*/
+@media (min-width: 641px), print {
+ #toclist .mll-teaser li {
+  font-size: 1.1290em;
+ }
+}
+/* Ticket SR-087387 Ende*/
+
+/* Ticket SR-091487 Anfang*/
+@media print {
+  div#et-askprivacy-container {
+    display: none;
+  }
+}
+/* Ticket SR-091487 Ende*/
+
+
+

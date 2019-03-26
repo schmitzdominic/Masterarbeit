@@ -1,0 +1,48 @@
+window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+        "palette": {
+            "popup": {
+                "background": "#ef6425",
+				"text": "#ffffff"
+            },
+            "button": {
+                "background": "#ffffff"
+            }
+        },
+        "theme": "classic",
+		"position": "bottom-left",
+        "type": "opt-in",
+        "content": {
+            "message": "Diese Webseite verwendet Cookies im Zusammenhang mit der Analysesoftware Matomo (ehm. Piwik) gemäß unserer Datenschutzerklärung. Drücken Sie auf OK, wenn sie einverstanden sind.",
+            "dismiss": "Ablehnen",
+            "allow": "OK",
+            "link": "Weitere Informationen",
+            "href": "/footer/datenschutz"
+        },
+        onInitialise: function (status) {
+            var type = this.options.type;
+            var didConsent = this.hasConsented();
+            if (type == 'opt-in' && didConsent) {
+                // enable cookies
+                _paq.push(['rememberConsentGiven']);
+            }
+            if (type == 'opt-in' && !didConsent) {
+                // disable cookies
+				_paq.push(['forgetConsentGiven']);
+            }
+        },
+        onStatusChange: function(status, chosenBefore) {
+            var type = this.options.type;
+            var didConsent = this.hasConsented();
+            if (type == 'opt-in' && didConsent) {
+                // enable cookies
+                _paq.push(['rememberConsentGiven']);
+            }
+            if (type == 'opt-in' && !didConsent) {
+                // disable cookies
+				_paq.push(['forgetConsentGiven']);
+            }
+        }
+ 
+    })
+});

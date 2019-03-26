@@ -1,0 +1,171 @@
+function berechnen()
+{
+document.getElementById("beitragergebnis").style.visibility="hidden";
+foo=document.forms['Formular'];
+untform=document.forms['Uform'];
+bar = foo.ertrag.value;
+if (isNaN(parseInt(bar)) || parseInt(bar) <= 0)
+{
+alert("Bitte geben Sie einen Gewerbeertrag größer 0 € ein!");
+return;
+}
+<!-- Keine Unternehmensform angehakt -->
+if (untform.eintr[0].checked == false && untform.eintr[1].checked == false && untform.eintr[2].checked == false)
+{
+alert("Bitte wählen Sie Ihre Unternehmensform aus!");
+return;
+}
+existext = "<p><strong>Hinweis f&uuml;r Existenzgr&uuml;nder:</strong><br/>Existenzgr&uuml;nder m&uuml;ssen oft in den ersten beiden Jahren in der IHK gar keinen Beitrag und in den n&auml;chsten beiden Jahren keine Umlage bezahlen. Das gilt aber nur, wenn Sie Einzelunternehmer und nicht in das Handels- oder das Genossenschaftsregister eingetragen sind. Außerdem darf Ihr Gewerbeertrag oder Gewinn aus Gewerbebetrieb 25.000,00 &euro; nicht &uuml;bersteigen. Diese Befreiung gilt aber dann nicht, wenn Sie in den letzten f&uuml;nf Jahren vor der Gr&uuml;ndung Eink&uuml;nfte aus Gewerbebetrieb, Land- und Forstwirtschaft oder selbst&auml;ndiger Arbeit erzielt haben oder zu mehr als 10,00 % an einer Kapitalgesellschaft beteiligt waren.</p>";
+if (untform.eintr[0].checked == true)
+{
+document.getElementById("kgt").innerHTML=existext;
+document.getElementById("kgt").style.visibility="visible";
+}else if (untform.eintr[1].checked == true || untform.eintr[2].checked == true)
+{
+document.getElementById("kgt").style.visibility="hidden";
+}
+<!--alert(foo.ertrag.value);-->
+gewerbeertrag=foo.ertrag.value;
+<!--alert(2*gewerbeertrag + " 2 Mal");-->
+<!--alert(foo.jahr.value) ;-->
+var hebesatz= new Array(0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22,0.22);
+var bmg = new Array (19);
+var gb = new Array (20);
+var freibetrag = new Array (7669.38,7669.38,7669.38,7669.38,7669.38,15338.76,15338.76,15338.76,15340.0,15340.0,15340.0,15340.0,15340.0,15340.0,15340.0,15340.0,15340.0,15340.0,15340.0);
+ 
+<!-- 1994 -->
+bmg[0] = new Array(24542.01, 24542.01);
+gb[0] = new Array(76.69, 127.82, 178.95);
+<!-- 2013 -->
+
+bmg[18] = new Array(5200.0,25000.0,50000.0,75000.0,500000.0,1000000.0);
+gb[18] = new Array(0.0,10.0,50.0,95.0,250.0,550.0);
+<!--Stand bis 2017 gb[18] = new Array(0.0,40.0,80.0,135.0,280.0,575.0);-->
+
+var gbhrb = new Array (20);
+gbhrb[18] = new Array(95.0,95.0,95.0,95.0,250.0,550.0);
+<!--Stand bis 2017 gbhrb[18] = new Array(135.0,135.0,135.0,135.0,280.0,575.0);-->
+
+gbhra = new Array (20);
+gbhra[18] = new Array(95.0,95.0,95.0,95.0,250.0,550.0);
+<!--Stand bis 2017 gbhra[18] = new Array(135.0,135.0,135.0,135.0,280.0,575.0);-->
+
+var grundbeitrag = 0.0;
+var umlage = 0.0;
+var summe = 0.0;
+var umlfrei = 0.0;
+
+if (foo.jahr.value==18){
+<!--Berechnung für 2013 -->
+<!-- Freibetrag + Umlage für 2013-->
+if (untform.eintr[0].checked == true || untform.eintr[1].checked == true)
+{ if (gewerbeertrag<freibetrag[18])
+{
+umlfrei = 0.0;
+
+}
+else
+{ <!-- hier noch den Fall keins angehakt bzw. nur letztes angehakt abhandeln -->
+umlfrei = gewerbeertrag - freibetrag[18];
+}
+umlage=hebesatz[18]/100*umlfrei;
+umlage=Math.round(100.0 * umlage) / 100.0;
+}
+else
+{ <!-- hier nochmal else Fall checken, HRB angekreuzt?!?! -->
+umlage=gewerbeertrag*hebesatz[18]/100;
+
+umlage=Math.round(umlage);
+
+}
+<!--Grundbeitrag 2013-->
+if (untform.eintr[0].checked == true) <!-- Sonderfall KGT -->
+{
+if(gewerbeertrag<=bmg[18][0])
+{
+grundbeitrag=gb[18][0];
+}
+else if (gewerbeertrag<=bmg[18][1])
+{
+grundbeitrag=gb[18][1];
+}
+else if (gewerbeertrag<=bmg[18][2])
+{
+grundbeitrag=gb[18][2];
+} else if (gewerbeertrag<=bmg[18][3]) <!-- if (untform.eintr[1].checked == true || untform.eintr[2].checked == true)-->
+{
+grundbeitrag=gb[18][3];
+}
+else if (gewerbeertrag<=bmg[18][4])
+{
+grundbeitrag=gb[18][4];
+}
+else if (gewerbeertrag>bmg[18][4])
+{
+grundbeitrag=gb[18][5];
+}
+
+
+
+} <!--else return;-->
+if (untform.eintr[1].checked == true) <!-- Sonderfall HRA -->
+{
+
+if (gewerbeertrag<=bmg[18][1])
+{
+grundbeitrag=gbhra[18][1];
+}
+else if (gewerbeertrag<=bmg[18][2])
+{
+grundbeitrag=gbhra[18][2];
+}
+else if (gewerbeertrag<=bmg[18][3])
+{
+grundbeitrag=gbhra[18][3];
+}
+else if (gewerbeertrag<=bmg[18][4])
+{
+grundbeitrag=gbhra[18][4];
+}
+else if (gewerbeertrag>bmg[18][4])
+{
+grundbeitrag=gbhra[18][5];
+}
+}
+if (untform.eintr[2].checked == true) <!-- Sonderfall HRB -->
+{
+
+if (gewerbeertrag<=bmg[18][1])
+{
+grundbeitrag=gbhrb[18][1];
+}
+else if (gewerbeertrag<=bmg[18][2])
+{
+grundbeitrag=gbhrb[18][2];
+}
+else if (gewerbeertrag<=bmg[18][3])
+{
+grundbeitrag=gbhrb[18][3];
+}
+else if (gewerbeertrag<=bmg[18][4])
+{
+grundbeitrag=gbhrb[18][4];
+}
+else if (gewerbeertrag>bmg[18][4])
+{
+grundbeitrag=gbhrb[18][5];
+}
+
+}}
+<!-- alert(grundbeitrag);-->
+<!-- Ergebnis auf 2 Nachkommastellen kürzen und aus Punkt Komma machen -->
+summe = grundbeitrag + umlage;
+grundbeitrag=grundbeitrag.toFixed(2);
+umlage=umlage.toFixed(2);
+summe=summe.toFixed(2);
+<!--alert("kommt bis zur Ausgabe");-->
+string="<strong>Ihr j&auml;hrlicher Beitrag:</strong><br/><table><tr><td align=right>" + grundbeitrag + " €</td><td>Grundbeitrag </td></tr><tr><td align=right>+ " + umlage + " €</td><td>Umlage </td></tr><tr><td align=right>= <strong>" + summe + " € </strong></td><td><strong>Gesamtbeitrag</strong></td</tr></table>";
+string+= '<p>(Ergebnis ohne Gew&auml;hr, da nur Standardf&auml;lle darstellbar sind.)</p>';
+document.getElementById("beitragergebnis").innerHTML=string;
+document.getElementById("beitragergebnis").style.visibility="visible";
+}

@@ -1,0 +1,52 @@
+/* Größenänderung für responsive HTML Fragmente*/
+.responsiveContainer {
+position: relative;
+padding-bottom: 82%;
+height: 0;
+overflow: hidden;
+}
+.responsiveContainer iframe,
+.responsiveContainer object,
+.responsiveContainer embed {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+/* Anpassung Abstand Teaser und 'mehr'*/
+
+.newsrotationtext-container .text,
+.startteaser-container .text {
+display: inline !important;
+}
+
+a.more.hidden-sm {
+display: inline !important;
+}
+
+div.text {
+    line-height: 1.6em;
+    margin: 0 0 1em 0;
+}
+
+.richtext .text a {
+    color: #2d76b2;
+/*    font-size: 16px*/
+}
+
+.content-container .text {
+    line-height: 1.6em;
+}
+
+.richtext span > img {
+    margin-right: 20px;
+    float: left;
+}
+
+.marginal-container .text {
+  margin: inherit;
+}
+
+

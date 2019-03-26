@@ -1,0 +1,26 @@
+$(document).ajaxComplete(function(){
+    if ($('.letters')) { $('.lazy').Lazy(); }
+}); 
+
+/* I-186804 */
+$(document).ajaxComplete(function(){
+   if ($('.letters')) { $('.lazy').Lazy(); }
+   var fnScroll = window['scrollEvents']; 
+    if(typeof fnScroll !== 'function') {
+      return;
+    }
+    if ($._data($(".all-events-scroll-up-dn").get(0), "events") !== undefined &&
+        $._data($(".all-events-scroll-up-dn").get(0), "events").click !== undefined) {
+      return;
+    }
+    $(".all-events-scroll-up-dn").last().click(function() {
+        var downA = $(this).find("a");        
+        scrollEvents(downA, "-");
+        return false;
+    });
+    $(".all-events-scroll-up-dn").first().click(function() {        
+        var upA = $(this).find("a");        
+        scrollEvents(upA, "+");
+        return false;
+    });
+});

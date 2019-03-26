@@ -1,0 +1,9 @@
+/*Test Originalbild*/
+.img-disable-cropping {
+min-width: 0px;
+min-height: 0px;
+height: auto !important;
+width: auto !important;
+max-width: 100%;
+max-height: none;
+}

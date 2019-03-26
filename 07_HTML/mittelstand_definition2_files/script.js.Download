@@ -1,0 +1,51 @@
+jQuery(document).ready(function( $ ) {
+
+    // mmenu
+    var $menu = $('#main-nav').mmenu({
+       extensions: [
+          'pagedim-black'
+       ],
+       offCanvas: {
+          position: 'right',
+          pageSelector: '#my-wrapper'
+       },
+       navbar: {
+          title: 'IfM Bonn'
+       },
+       navbars: [
+          {
+             position: 'top',
+             content: [
+                '<form method="post" id="mmsearch" action="suche/?tx_indexedsearch_pi2%5Baction%5D=search&amp;tx_indexedsearch_pi2%5Bcontroller%5D=Search&amp;cHash=4db7a1f02df5a4af8491bf96df3de297"><input name="tx_indexedsearch_pi2[__referrer][@extension]" value="" type="hidden"><input name="tx_indexedsearch_pi2[__referrer][@controller]" value="Standard" type="hidden"><input name="tx_indexedsearch_pi2[__referrer][@action]" value="index" type="hidden"><input name="tx_indexedsearch_pi2[__referrer][arguments]" value="YTowOnt9c86179b9c47157cce5cc11bd65af1daa5521bc1b" type="hidden"><input name="tx_indexedsearch_pi2[__referrer][@request]" value="a:3:{s:10:&quot;@extension&quot;;N;s:11:&quot;@controller&quot;;s:8:&quot;Standard&quot;;s:7:&quot;@action&quot;;s:5:&quot;index&quot;;}89c1e8f8e1216572ce0e6e967912ac1892be4127" type="hidden"><input name="tx_indexedsearch_pi2[__trustedProperties]" value="a:1:{s:6:&quot;search&quot;;a:3:{s:5:&quot;sword&quot;;i:1;s:4:&quot;type&quot;;i:1;s:5:&quot;defOp&quot;;i:1;}}eb8da449c02d97840bc01bcc1ad3f78aec470e04" type="hidden"><input placeholder="Suchbegriff" class="tx-indexedsearch-searchbox-sword" name="tx_indexedsearch_pi2[search][sword]" type="text"><input name="tx_indexedsearch_pi2[search][type]" value="1" type="hidden"><input name="tx_indexedsearch_pi2[search][defOp]" value="0" type="hidden"></form>',
+                'close'
+             ]
+          }
+       ]
+    }, {
+        // configuration
+        clone: true
+    });
+  
+    // this does the actual job to prevent the click of last mobile menu item (Weiteres) in the first level
+    var api = $menu.data('mmenu');
+    api.bind('open:finish', function () {
+        $('#mm-1 ul.mm-listview > li:last-child > a:last-child').click(function (event) {
+            event.preventDefault();
+            return false;
+        });
+    });
+      
+    // responsive contenttable
+    $('.contenttable').wrap('<div class="responsiveTable"></div>');
+    
+    // superfish desktop tablet compatibility menu script
+  $('#wrapper #main-nav').superfish({
+    disableHI: true,
+    speed: 'fast'
+  });
+
+  // remove href for Tooltip, BGO 20.03.2019   
+  $('a.tooltip').removeAttr('href');
+});
+
+
