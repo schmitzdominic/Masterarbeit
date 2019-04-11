@@ -41,7 +41,7 @@ Die Grundlage und somit das Fundament bilden die agilen Werte, aus denen sich al
 	Mitarbeiter gehen respektvoll miteinander um, betrachten diese als gleichwertig und besitzen Achtung vor ihnen. Da die Teamarbeit in einer agilen Struktur eine wichtige Rolle spielt, ist die Achtung anderer Mitarbeiter ein grundlegendes Element, besonders bereichsübergreifend. Dies ermöglicht unterschiedliche Perspektiven zu berücksichtigen bei der Lösungsentwicklung. Nur mit einer entsprechenden Unternehmenskultur sind kollaborativ organisierte Unternehmen überhaupt denkbar \autocite[vgl.][S.25]{agile_werte}. 
 \end{itemize}
 
-\subsubsection{Prinzipien} \label{Kap:Frameworks}
+\subsubsection{Prinzipien} \label{Kap:Prinzipien}
 
 Auf den ersten Blick fällt es nicht leicht, Werte und Prinzipien voneinander zu unterscheiden. Prinzipien sind konkrete Ableitungen von Werten. So kann die Handlung eines Prinzips \enquote{wir wollen definierte Ziele erreichen} lauten. Dieses Prinzip leitet sich aus dem Wert Selbstverpflichtung ab. Prinzipien können auch als Regeln gesehen werden. Diese Regeln bilden eine Entscheidungsgrundlage für das Handeln. Agile Prinzipien gibt es viele, die für diese Arbeit wichtigsten werden in Tabelle \ref{tbl:agile_prinzipien} abgebildet \autocite[vgl.][S.12]{agiler_fuehren}.
 
@@ -72,7 +72,7 @@ Auf den ersten Blick fällt es nicht leicht, Werte und Prinzipien voneinander zu 
 	
 \end{table}
 
-\subsection{Methoden} 
+\subsection{Methoden} \label{Kap:Methoden}
 
 Gebündelte und in Konzepte übersetzte Handlungen werden Methoden genannt. Handlungen beruhen auf den agilen Prinzipien und passen zum agilen Gedanken. Diese sind handfester als die agilen Frameworks (siehe Kapitel \ref{Kap:AgileFrameworks}). In Tabelle \ref{tbl:agile_methoden} werden einige Methoden erläutert und in Beziehung zu den agilen Prinzipien gesetzt \autocite[vgl.][S.17]{agiler_fuehren}.
 
@@ -185,7 +185,7 @@ Wie in Abbildung \ref{img:scrum} dargestellt, besitzt Scrum sogenannte Rollen, A
 		\item Wie können zukünftig diese Hindernisse verhindert werden?	
 	\end{itemize}
 
-	Zusätzlich kann die Retrospective auch spielerisch gestaltet werden, um die Motivation im Team und Effizienz des Meetings zu steigern.
+	Zusätzlich kann die Retrospective auch spielerisch gestaltet werden, um die Motivation im Team und die Effizienz des Meetings zu steigern.
 	
 \end{itemize}
 
@@ -210,6 +210,86 @@ Nach Abschluss des sprints, wird das Ergebnis (Inkrement) während des Sprint Rev
 Ursprünglich wurde Kanban zur Steuerung des Materialflusses innerhalb der Produktion entwickelt. Der Begriff Kanban hat in der englischen Literatur zwei unterschiedliche Bedeutungen, je nachdem ob dieser groß- oder kleingeschrieben ist. Die Methode wird großgeschrieben, hingegen als Signalkarte, System und Board klein. Im deutschen Sprachgebrauch wird vereinfacht nur von \enquote{Kanban} gesprochen \autocite[vgl.][S.42]{agiles_pm_berufsalltag}.
 \\\\
 In dieser Arbeit wird Kanban nicht zur Steuerung des Materialflusses genauer erläutert, sondern die abgewandelte Version zur Softwareentwicklung. Diese wurde im Jahre 2007 von David J. Anderson entwickelt \autocite[vgl.][S.1]{kanban}. 
+\\\\
+Eine schlanke Produktion und Softwareentwicklung teilen sich den Anspruch, Arbeitsfortschritte gleichmäßig zu erreichen. Der Unterschied liegt darin, dass die Softwareentwicklung ein kreativer Prozess im Gegensatz zur Produktion ist \autocite[vgl.][S.36]{kanban}.
+
+\subsubsection{Elemente}
+Es bestehen insgesamt vier Elemente die Kanban charakterisieren (Elemente nach \autocite[][S.54]{kanban}). 
+
+\begin{itemize}
+	\item \textbf{Arbeit wird genommen, nicht gegeben (Pull)}\\
+	Während Aufgaben die Wertschöpfungskette durchlaufen, werden diese jeweils zur nächsten Phase gezogen (Pull) und nicht geschoben (Push). So wird eine Überlastung des Teams vermieden und eine eigenverantwortliche und selbstorganisierte Arbeitsweise ermöglicht. Zusätzlich wird die Anzahl von Aufgaben, die sich zur selben Zeit in jeder Phase befinden, limitiert. Ausgenommen davon sind nur Aufgaben die sich in einem Puffer befinden. Innerhalb eines Puffers werden Aufgaben nicht bearbeitet, weshalb diese auch nicht gezogen werden können \autocite[vgl.][S.54,55]{kanban}.
+	
+	\item \textbf{Mengen werden limitiert (Limitierte Mengen)}\\
+	Zur gleichen Zeit in der Wertschöpfungskette, dürfen sich nur eine limitierte Anzahl an Aufgaben befinden. Zudem existiert ein Limit in jeder einzelnen Phase der Wertschöpfungskette, was das gesamt Limit bestimmt. Durch diese Limitierung wird der Work in Progress (laufende Arbeit) und die Überlastung von Personen reduziert. Zusätzlich wird ein schnellerer Abschluss der Aufgaben unterstützt. So wird mithilfe dieses Elements eine möglichst geringe Durchlaufzeit bei der Bearbeitung von Aufgaben realisiert \autocite[vgl.][S.57]{kanban}.  
+	
+	
+	\newpage
+	\item \textbf{Informationen werden veröffentlicht (Transparente Informationen)}\\
+	Um Aufgaben selbst zu organisieren und eigenverantwortlich zu Arbeiten sind transparente Informationen notwendig. Es muss konsequent eine Transparenz der Aufgaben herrschen und alle Personen des Teams müssen davon profitieren. Die wichtigsten Transparenten Informationen sind 
+	
+	\begin{itemize}
+		\item alle Phasen, die jede Aufgabe durchläuft;
+		\item alle Aufgaben, die sich innerhalb der Phasen befinden;
+		\item alle Personen, die Aufgaben in einer Phase durchführen;
+		\item Limitierungen der Anzahl der Aufgaben pro Phase und
+		\item alle Projektkennzahlen, die den Arbeitsvorschritt darstellen \autocite[vgl.][S.58,59]{kanban}.
+	\end{itemize}
+	
+	\item \textbf{Arbeitsabläufe werden kontinuierlich verbessert (Kontinuierliche Verbesserung)}\\
+	Kontinuierliche Verbesserung ist ein wesentlicher Aspekt von Kanban. Softwareprojekte werden als lebendig charakterisiert. Zusätzlich ist ein natürlicher Bestandteil eines Softwareprojektes, die Änderungen von individuellen Rahmenbedingungen. Als individuelle Rahmenbedingungen werden etwa Termine, Budget, Wissen oder Personen betrachtet. Alle Verbesserungen müssen an diese angepasst werden. Nur durch die aktive Beteiligung jeder Person eines Teams, können Verbesserungen erfolgen. Diese passieren in der Absicht
+	
+	\begin{itemize}
+		\item der Einführung neuer Elemente, Werte und Techniken,
+		\item der Hinterfragung bereits bestehender Elemente, Werte und Techniken,
+		\item sowie nicht genutzte Elemente, Werte und Techniken zu verwerfen \autocite[vgl.][S.62,63]{kanban}.
+	\end{itemize}
+
+	Weitere Ziele hinter all dem sind die Reduzierung von Ballast des Auftragnehmers, die Erhöhung des Geschäftswerts der Arbeit und einen gleichmäßigen Arbeitsfortschritt zu etablieren \autocite[vgl.][S.62,63]{kanban}. Laut \autocite[][]{kanban_anderson} läuft jede Verbesserung in den folgenden Schritten ab. 
+	
+	\begin{enumerate}
+		\item Identifizieren sie die größte Schwachstelle im Vorgehensmodell.
+		\item Es müssen Maßnahmen beschlossen werden, um die Performance der Schwachstelle zu maximieren.
+		\item Alle Maßnahmen des zweiten Schritts werden mit höchster Priorität umgesetzt.
+		\item Es muss überprüft werden, ob die Schwachstelle immer noch die größte Schwachstelle darstellt. Ist dies der Fall, müssen weitere Maßnahmen mit der höchsten Priorität beschlossen werden, bis diese Schwachstelle nicht mehr die größte ist.
+		\item Hören sie nicht auf und beginnen sie bei Schritt eins erneut.
+	\end{enumerate} 
+
+\subsubsection{Techniken}
+
+% Abbildung
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{06_Bilder/Kanban_board.png}
+	\setlength{\abovecaptionskip}{1em}
+	\caption{Kanban-Board in Anlehnung an \autocite[][S.121 Abb.6.8]{kanban}}
+	\label{img:kanban_board}
+\end{figure}
+
+Kanban verwendet als Techniken einige Methoden der Agilität (siehe Kapitel \ref{Kap:Methoden}) die bereits erläutert wurden. Kanban besitzt zusätzlich eine wichtige zentrale Technik mit dem Namen \enquote{Kanban-Board} die noch nicht genauer erläutert wurde. Das Kanban-Board (siehe Abbildung \ref{img:kanban_board}) visualisiert alle Phasen der Wertschöpfungskette. Zusätzlich zeigt es die limitierten Mengen und Anforderung jeder Phase an. Es lässt sich in den verschiedensten Varianten in den verschiedensten Projekten finden. Der Grund weshalb es so wichtig für Kanban ist, es realisiert die Elemente Pull, Limitierte Mengen und Transparente Informationen zur gleichen Zeit. Um Anforderungen zu Visualisieren und Präsentieren werden Signalkarten verwendet. Jede Signalkarte besitzt wichtige Informationen für das Team zur jeweiligen Anforderung \autocite[vgl.][115]{kanban}. 
+\\\\
+Signalkarten durchlaufen jede Phase der Wertschöpfungskette und repräsentieren dabei eine Anforderung. Um Schwankungen im Anforderungsfluss zu vermeiden, kann eine Wertschöpfungskette einen oder mehrere Puffer für Anforderungen enthalten \autocite[vgl.][117]{kanban}. 
+\\\\
+Das Element der Limitierten Menge wird nun auf jede Phase innerhalb der Wertschöpfungskette angewandt. So wird die Anzahl der sich gleichzeitig in einer Phase befindenden Signalkarten (Anforderungen) limitiert. Diese Limitierung gilt auch für Puffer Phasen. Limitierungen können für jede Phase einzeln oder übergreifend für mehrere Phasen festgelegt werden. Falls die Überschreitung einer Limitierung droht, gibt es zwei Möglichkeiten \autocite[vgl.][118]{kanban}.
+
+\begin{itemize}
+	\item Es ist nicht erlaubt die Limitierung zu überschreiten. Das Resultat ist mindestens eine Signalkarte die sich in der falschen Phase befindet. Durch den Rückstau von Signalkarten wird eine schnelle Reaktion des Teams provoziert \autocite[vgl.][118]{kanban}.
+	
+	\item Es ist erlaubt die Limitierung zu überschreiten. So befindet sich zwar die Signalkarte in der richtigen Phase, es wird allerdings keine Reaktion seitens des Teams provoziert \autocite[vgl.][119]{kanban}.
+\end{itemize} 
+
+In seiner einfachsten Form wird ein Kanban-Board mithilfe von aufeinanderfolgenden Spalten visualisiert. Jede Spalte repräsentiert eine Phase in der Wertschöpfungskette die mit einer Limitierung versehen ist. Zusätzlich kann ein Kanban-Board Informationen wie beispielsweise die gemessene Entwicklungsgeschwindigkeit oder Durchlaufzeit anzeigen \autocite[vgl.][119,120]{kanban}.
+\\\\
+Kanban-Boards sind projektindividuell. Aus diesem Grund wird man vermutlich keine zwei Softwareentwicklungsprojekte mit gleich gestalteten Kanban-Boards finden. Alle Arten von projektbezogenen Individualisierungen sind erlaubt. Pflicht sind nur die Phasen der Wertschöpfungskette, die Anforderungen und die Limitierungen \autocite[vgl.][121,122]{kanban}.     
+
+  
+
+
+	
+	
+\end{itemize}  
+
+
 
 
 
@@ -217,11 +297,8 @@ In dieser Arbeit wird Kanban nicht zur Steuerung des Materialflusses genauer erl
 \section{Agilit\"at in großen Unternehmen} \label{Kap:AgilitaetGrosseUnternehmen}
 Was für Formen werden in großen Teams verwendet? SCRUM in SCRUM? usw.. Recherche!
 
-\section{Klassische Projektmanagementmethoden} \label{Kap:KlassischeProjektmanagementmethoden}
-Klassische Projektmanagementmethoden
-V Modell?
-Wasserfall?
-Gängigste Methoden herausfinden und definieren. (Evtl. darauf achten welche Methoden die Unternehmen später in den Berichten und Interviews verwenden und diese hier erläutern)
+\section{Vergleich zwischen Agil und Klassisch} \label{Kap:VergleichAgilKlassisch}
+Was sind die wesentlichen Unterschiede? wo punkten welche Art von Methode?
 
 \section{Agile Transformation} \label{Kap:AgileTransformation}
 Was ist die Agile Transformation? Bitte IT Kontext beibehalten!
