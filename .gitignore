@@ -8,6 +8,7 @@
 *.glg
 *.glo
 *.gls
+*.glsdefs
 *.ist
 *.lof
 *.log
