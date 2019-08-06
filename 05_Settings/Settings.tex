@@ -16,6 +16,9 @@
 % Glossarzusatz
 \renewcommand{\glossarysection}[2][]{\chapter*{#1}}	
 
+% Farbiger Punkt
+\newcommand{\tikzcircle}[2][red,fill=red]{\tikz[baseline=-0.5ex]\draw[#1,radius=#2] (0,0) circle ;}
+
 % Abbildungsverzeichnis
 \newcommand{\abbildungsverzeichnis}{\newpage
 	\phantomsection
