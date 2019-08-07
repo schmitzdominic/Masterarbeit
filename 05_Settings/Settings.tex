@@ -19,6 +19,23 @@
 % Farbiger Punkt
 \newcommand{\tikzcircle}[2][red,fill=red]{\tikz[baseline=-0.5ex]\draw[#1,radius=#2] (0,0) circle ;}
 
+% Zeilenumbruch Titel Literatur
+\renewcommand*{\labelnamepunct}{\newline\bibsentence}
+
+\usepackage{xpatch}
+\makeatletter
+\def\do#1{
+	\ifcsdef{blx@bbx@#1}
+	{\xpatchbibdriver{#1}
+		{\printlist{language}%
+			\newunit\newblock}
+		{\printlist{language}%
+			\printunit{\newline\bibsentence}}
+		{}{}}
+	{}} 
+\abx@doentrytypes
+\makeatother
+
 % Abbildungsverzeichnis
 \newcommand{\abbildungsverzeichnis}{\newpage
 	\phantomsection
@@ -76,6 +93,7 @@
 }
 
 \newcommand{\literaturverzeichnis}{
+	\normalem
 	\phantomsection
 	\addcontentsline{toc}{chapter}{Literatur}	% Überschrift
 	\printbibliography	
